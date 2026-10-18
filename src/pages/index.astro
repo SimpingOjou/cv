@@ -49,11 +49,78 @@ const formatDetails = (text: string) => {
         <p class="tagline" data-anima="fade-up">{cv.tagline}</p>
       </div>
 
-      <!-- Neural / Physiological Signal decoration -->
-      <div class="signal" aria-hidden="true">
-        <svg class="signal-svg" viewBox="0 0 745 80" preserveAspectRatio="none" role="presentation">
-          <path d="M0 40 h40 l10 -15 l8 30 l12 -45 l10 32 l12 -12 h70 l12 -28 l10 54 l10 -42 l12 20 h60 l15 -25 l10 46 l10 -38 l12 18 h70 l12 22 l10 -46 l10 40 l12 -18 h60 l14 -30 l10 58 l11 -46 l11 20 h60 l10 -18 l10 34 l12 -28 l10 14 h60" vector-effect="non-scaling-stroke"></path>
-        </svg>
+      <!-- Multi-Channel Biosignals Streaming Monitor (EEG + EMG + Kinematics + ECG) -->
+      <div class="signals-monitor" aria-label="Simulated physiological signals over time">
+        <div class="signals-header u-mono">
+          <span class="signals-title">
+            <span style="color: var(--dracula-pink);">◈</span> MULTIMODAL SIGNAL ANALYSIS
+          </span>
+          <span class="signals-status">
+            <span class="status-dot"></span> FZ · 1000 Hz
+          </span>
+        </div>
+
+        <div class="signals-channels">
+          <!-- Channel 1: EEG (Alpha/Theta rhythm) -->
+          <div class="signal-row">
+            <span class="signal-label sig-eeg u-mono">EEG (Cz)</span>
+            <div class="signal-viewport">
+              <div class="signal-stream sig-stream-eeg">
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M0 20 Q 15 8, 30 20 T 60 20 T 90 20 Q 105 5, 120 20 T 150 20 Q 165 32, 180 20 T 210 20 Q 225 10, 240 20 T 270 20 Q 285 30, 300 20 T 330 20 Q 345 6, 360 20 T 390 20 Q 405 32, 420 20 T 450 20 Q 465 12, 480 20 T 500 20" fill="none" stroke="var(--dracula-purple)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M0 20 Q 15 8, 30 20 T 60 20 T 90 20 Q 105 5, 120 20 T 150 20 Q 165 32, 180 20 T 210 20 Q 225 10, 240 20 T 270 20 Q 285 30, 300 20 T 330 20 Q 345 6, 360 20 T 390 20 Q 405 32, 420 20 T 450 20 Q 465 12, 480 20 T 500 20" fill="none" stroke="var(--dracula-purple)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Channel 2: EMG (Surface Muscle Burst) -->
+          <div class="signal-row">
+            <span class="signal-label sig-emg u-mono">EMG (TA)</span>
+            <div class="signal-viewport">
+              <div class="signal-stream sig-stream-emg">
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M 0 20 h 40 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 30 l 3 -5 l 3 6 l 3 -7 l 3 6 h 30 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 128 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 30 l 3 -5 l 3 6 l 3 -7 l 3 6 h 30 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 88" fill="none" stroke="var(--dracula-cyan)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M 0 20 h 40 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 30 l 3 -5 l 3 6 l 3 -7 l 3 6 h 30 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 128 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 30 l 3 -5 l 3 6 l 3 -7 l 3 6 h 30 l 2 -12 l 3 16 l 2 -18 l 3 22 l 2 -15 l 3 12 l 2 -16 l 3 14 l 2 -10 l 3 7 h 88" fill="none" stroke="var(--dracula-cyan)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Channel 3: Kinematics (Gait / Joint Angle) -->
+          <div class="signal-row">
+            <span class="signal-label sig-kin u-mono">MoCap (Ankle)</span>
+            <div class="signal-viewport">
+              <div class="signal-stream sig-stream-kin">
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M0 26 C 30 26, 45 34, 75 32 C 105 30, 120 8, 150 8 C 175 8, 195 24, 220 26 C 240 28, 250 26, 250 26 C 280 26, 295 34, 325 32 C 355 30, 370 8, 400 8 C 425 8, 445 24, 470 26 C 490 28, 500 26, 500 26" fill="none" stroke="var(--dracula-green)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M0 26 C 30 26, 45 34, 75 32 C 105 30, 120 8, 150 8 C 175 8, 195 24, 220 26 C 240 28, 250 26, 250 26 C 280 26, 295 34, 325 32 C 355 30, 370 8, 400 8 C 425 8, 445 24, 470 26 C 490 28, 500 26, 500 26" fill="none" stroke="var(--dracula-green)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Channel 4: ECG (P-QRS-T complex) -->
+          <div class="signal-row">
+            <span class="signal-label sig-ecg u-mono">ECG (Lead II)</span>
+            <div class="signal-viewport">
+              <div class="signal-stream sig-stream-ecg">
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M 0 20 h 45 q 10 -5 20 0 h 25 l 4 3 l 6 -24 l 6 34 l 4 -13 h 25 q 15 -9 30 0 h 130 q 10 -5 20 0 h 25 l 4 3 l 6 -24 l 6 34 l 4 -13 h 25 q 15 -9 30 0 h 85" fill="none" stroke="var(--dracula-pink)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none">
+                  <path d="M 0 20 h 45 q 10 -5 20 0 h 25 l 4 3 l 6 -24 l 6 34 l 4 -13 h 25 q 15 -9 30 0 h 130 q 10 -5 20 0 h 25 l 4 3 l 6 -24 l 6 34 l 4 -13 h 25 q 15 -9 30 0 h 85" fill="none" stroke="var(--dracula-pink)" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
 

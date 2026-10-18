@@ -2,15 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap');
 
 :root {
-  --color-bg: #0b0b0d;
-  --color-surface: #131316;
-  --color-elevated: #1a1a1f;
-  --color-fg: #eceae3;
-  --color-muted: #8b8b92;
-  --color-line: #232327;
-  --color-accent: #ff5a36;
-  --color-accent-ink: #0b0b0d;
-  --color-accent-glow: rgba(255, 90, 54, 0.15);
+  --color-bg: #282a36;
+  --color-surface: #21222c;
+  --color-elevated: #343746;
+  --color-current-line: #44475a;
+  --color-fg: #f8f8f2;
+  --color-muted: #6272a4;
+  --color-line: #44475a;
+  --color-accent: #bd93f9;
+  --color-accent-ink: #282a36;
+  --color-accent-glow: rgba(189, 147, 249, 0.2);
+  
+  /* Dracula accents */
+  --dracula-purple: #bd93f9;
+  --dracula-cyan: #8be9fd;
+  --dracula-green: #50fa7b;
+  --dracula-orange: #ffb86c;
+  --dracula-pink: #ff79c6;
+  --dracula-comment: #6272a4;
   
   --font-display: 'Bricolage Grotesque', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -207,16 +216,122 @@ ul, ol {
   color: var(--color-fg);
 }
 
-@keyframes pulse-signal {
-  0%, 100% { opacity: 0.75; }
-  50% { opacity: 1; }
+/* Multi-channel Biosignal Monitor */
+.signals-monitor {
+  margin-top: var(--space-6);
+  background: color-mix(in srgb, var(--color-surface) 75%, transparent);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
 }
 
-.signal-svg {
+.signals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed var(--color-line);
+  font-size: 0.75rem;
+}
+
+.signals-title {
+  color: var(--dracula-purple);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signals-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--dracula-green);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dracula-green);
+  box-shadow: 0 0 8px var(--dracula-green);
+  animation: pulse-dot 1.8s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.signals-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.signal-row {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signal-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.signal-label.sig-eeg { color: var(--dracula-purple); }
+.signal-label.sig-emg { color: var(--dracula-cyan); }
+.signal-label.sig-kin { color: var(--dracula-green); }
+.signal-label.sig-ecg { color: var(--dracula-pink); }
+
+.signal-viewport {
+  position: relative;
+  height: 38px;
   width: 100%;
-  height: 60px;
-  stroke: var(--color-accent);
-  stroke-width: 1.5;
-  fill: none;
-  animation: pulse-signal 4s ease-in-out infinite;
+  overflow: hidden;
+  background: rgba(40, 42, 54, 0.4);
+  border-radius: 3px;
+  border: 1px solid rgba(68, 71, 90, 0.4);
+}
+
+.signal-stream {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+}
+
+.signal-stream svg {
+  width: 50%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.sig-stream-eeg { animation: scroll-wave 12s linear infinite; }
+.sig-stream-emg { animation: scroll-wave 8s linear infinite; }
+.sig-stream-kin { animation: scroll-wave 18s linear infinite; }
+.sig-stream-ecg { animation: scroll-wave 6s linear infinite; }
+
+@keyframes scroll-wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 560px) {
+  .signal-row {
+    grid-template-columns: 60px 1fr;
+    gap: 0.5rem;
+  }
 }
