@@ -189,6 +189,12 @@ const formatDetails = (text: string) => {
                 ))}
               </p>
               <p class="venue">{pub.venue}</p>
+              {pub.figure && (
+                <div class="pub-figure" data-anima="fade-up">
+                  <img src={pub.figure.src.startsWith('/') ? pub.figure.src : `${import.meta.env.BASE_URL}/${pub.figure.src}`.replace(/\/+/g, '/')} alt={pub.figure.caption || pub.title} loading="lazy" />
+                  {pub.figure.caption && <p class="figure-caption u-mono">{pub.figure.caption}</p>}
+                </div>
+              )}
             </div>
           </article>
         ))}

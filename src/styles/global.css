@@ -173,22 +173,55 @@ ul, ol {
   font-weight: 600;
 }
 
-/* Authors list styling: bright #f8f8f2 with prominent #bd93f9 for your name */
-.authors {
-  margin-top: var(--space-2);
-  font-size: var(--text-sm);
-  color: #f8f8f2 !important;
-  line-height: 1.5;
-}
+/* Explicit high-specificity rule for Publication Authors */
+.pub .authors,
+.pub .authors span,
+.authors,
 .authors span {
-  color: #f8f8f2;
+  color: #f8f8f2 !important;
+  opacity: 0.95;
 }
+
+.pub .authors .me,
 .authors .me {
-  color: var(--dracula-purple) !important; /* #bd93f9 */
+  color: #bd93f9 !important;
   font-weight: 700 !important;
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--dracula-purple) 60%, transparent);
+  text-decoration-color: rgba(189, 147, 249, 0.6);
   text-underline-offset: 3px;
+  opacity: 1 !important;
+}
+
+/* Publication Figure presentation */
+.pub-figure {
+  margin-top: 1.25rem;
+  background: color-mix(in srgb, var(--color-surface) 95%, #ffffff 5%);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  max-width: 840px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+.pub-figure:hover {
+  border-color: color-mix(in srgb, var(--dracula-purple) 60%, var(--color-line));
+}
+.pub-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  background: #ffffff; /* Clean white canvas for scientific trajectories */
+  padding: 0.5rem;
+}
+.figure-caption {
+  margin-top: 0.75rem;
+  font-size: 0.76rem;
+  color: var(--color-fg);
+  opacity: 0.88;
+  line-height: 1.45;
+  border-left: 2px solid var(--dracula-purple);
+  padding-left: 0.65rem;
 }
 
 /* Supervisor / PI Badge Box */

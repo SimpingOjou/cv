@@ -33,7 +33,11 @@
         "title": "Contrastive Learning Reveals Distinct Temporal Timescales for Task Execution and Adaptation in Robot-Assisted Reaching",
         "authors": ["Lin C. H. S.", "Corsini A.", "Oliveira Da Silva Filho G.", "Koul A.", "D'Ausilio A."],
         "venue": "Conference abstract submitted to the 2026 European Congress of Physiology FEPS-SIF ",
-        "isLead": true
+        "isLead": true,
+        "figure": {
+          "src": "images/reaching_trajectories.png",
+          "caption": "Time Contrastive Learning vs Linear baseline (NMF) in robot-assisted reaching."
+        }
       }
     ]
   },

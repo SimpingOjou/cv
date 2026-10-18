@@ -39,6 +39,28 @@ def build():
 
     pubs_wip = ''
     for p in cv['publications'].get('in_progress', []):
+        fig_html = ''
+        if 'figure' in p and p['figure']:
+            fig_data = p['figure']
+            src = fig_data.get('src', '')
+            caption = fig_data.get('caption', '')
+            # For offline preview.html, embed as base64 so it works anywhere without a web server
+            import os, base64
+            img_path = os.path.join('public', src)
+            if os.path.exists(img_path):
+                with open(img_path, 'rb') as img_f:
+                    b64_str = base64.b64encode(img_f.read()).decode('utf-8')
+                    ext = src.split('.')[-1]
+                    img_src = f'data:image/{ext};base64,{b64_str}'
+            else:
+                img_src = src
+            caption_html = f'<p class="figure-caption u-mono">{caption}</p>' if caption else ''
+            fig_html = f'''
+            <div class="pub-figure" data-anima="fade-up">
+              <img src="{img_src}" alt="{caption or p['title']}" loading="lazy" />
+              {caption_html}
+            </div>
+            '''
         pubs_wip += f'''
         <article class="pub" data-anima="fade-up">
           <p class="year u-mono">{p["year"]}</p>
@@ -46,6 +68,7 @@ def build():
             <h3 class="title">{p["title"]}</h3>
             <p class="authors u-mono">{authors_html(p["authors"])}</p>
             <p class="venue">{p["venue"]}</p>
+            {fig_html}
           </div>
         </article>
         '''
