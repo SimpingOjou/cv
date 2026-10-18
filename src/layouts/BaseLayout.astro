@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0b0d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <slot />
+
+    <script>
+      // Scroll animations with IntersectionObserver
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('[data-anima]').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
+

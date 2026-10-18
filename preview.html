@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>Simone Lin — Ph.D. Candidate — Theoretical & Applied Neuroscience</title>
+    <meta name="description" content="I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on developing automated pipelines for biomechanical analysis, applying contrastive learning and deep learning representations to clinical neural and behavioral data, and pushing the boundaries of translational neurophysiology." />
+    <meta name="theme-color" content="#0b0b0d" />
+    <style>
+/* Base Design Tokens & Reset */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap');
+
+:root {
+  --color-bg: #0b0b0d;
+  --color-surface: #131316;
+  --color-elevated: #1a1a1f;
+  --color-fg: #eceae3;
+  --color-muted: #8b8b92;
+  --color-line: #232327;
+  --color-accent: #ff5a36;
+  --color-accent-ink: #0b0b0d;
+  --color-accent-glow: rgba(255, 90, 54, 0.15);
+  
+  --font-display: 'Bricolage Grotesque', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  
+  --text-sm: 0.8125rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.375rem;
+  --text-lead: clamp(1.125rem, 0.95rem + 0.8vw, 1.375rem);
+  --text-xl: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  --text-2xl: clamp(2.25rem, 1.2rem + 5vw, 4rem);
+  --text-3xl: clamp(3.25rem, 1rem + 13vw, 10rem);
+  
+  --leading-tight: 1.02;
+  --leading-snug: 1.18;
+  --leading-normal: 1.6;
+  --tracking-tight: -0.03em;
+  --tracking-wide: 0.22em;
+  
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6.5rem;
+  --space-10: 9rem;
+  --space-11: 12rem;
+  --space-12: 16rem;
+  
+  --container: 74rem;
+  --gutter: clamp(1.25rem, 0.5rem + 4vw, 4rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.2s;
+  --dur-base: 0.45s;
+  --dur-slow: 0.9s;
+  --radius: 4px;
+  --border: 1px solid var(--color-line);
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Grain background texture */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+}
+
+/* Utility Container */
+.u-container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.u-mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Clean layout styles */
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--color-bg) 72%,transparent);backdrop-filter:blur(10px);border-bottom:var(--border)}.nav-inner{display:flex;align-items:center;justify-content:space-between;height:3.75rem}.brand{font-family:var(--font-display);font-weight:800;font-size:var(--text-lg);letter-spacing:-.04em}.dot{color:var(--color-accent)}.links{display:flex;gap:var(--space-5);font-size:var(--text-sm)}.links a{color:var(--color-muted);transition:color var(--dur-fast) var(--ease-out)}.links a:hover{color:var(--color-fg)}@media(max-width:560px){.links{gap:var(--space-3);font-size:.6875rem}}.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:var(--space-6);padding-block:var(--space-9)}.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 15% 30%,color-mix(in srgb,var(--color-accent) 14%,transparent),transparent 70%);pointer-events:none}.eyebrow{color:var(--color-accent);text-transform:uppercase;letter-spacing:var(--tracking-wide);font-size:var(--text-sm)}.name{font-family:var(--font-display);font-weight:700;font-size:var(--text-3xl);line-height:var(--leading-tight);letter-spacing:var(--tracking-tight)}.meta{display:flex;flex-direction:column;gap:var(--space-3);max-width:46ch}.role{color:var(--color-muted);font-size:var(--text-sm)}.tagline{font-size:var(--text-xl);color:var(--color-fg);line-height:var(--leading-snug)}.signal{margin-top:var(--space-5);animation:signal-in .8s var(--ease-out) .4s both}@keyframes signal-in{0%{opacity:0}to{opacity:1}}.signal-svg{width:100%;height:60px;display:block}.signal-svg path{fill:none;stroke:var(--color-accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}@media(prefers-reduced-motion:reduce){.signal{animation:none}}.section{padding-block:var(--space-9);border-top:var(--border)}.section-head{display:flex;align-items:baseline;gap:var(--space-4);margin-bottom:var(--space-7)}.section-index{color:var(--color-accent);font-size:var(--text-sm)}.section-title{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700}@media(min-width:900px){.section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:var(--gutter);align-items:start}.section-head{position:sticky;top:5.25rem;flex-direction:column;gap:var(--space-2);margin-bottom:0}}.footer{padding-block:var(--space-9) var(--space-7);border-top:var(--border)}.footer-top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--space-6)}.mail{font-family:var(--font-display);font-size:var(--text-xl);letter-spacing:var(--tracking-tight);border-bottom:1px solid transparent;transition:border-color var(--dur-fast) var(--ease-out)}.mail:hover{border-color:var(--color-accent)}.links{display:flex;flex-wrap:wrap;gap:var(--space-5);font-size:var(--text-sm)}.links a{color:var(--color-muted);transition:color var(--dur-fast) var(--ease-out)}.links a:hover{color:var(--color-accent)}.colophon{margin-top:var(--space-8);color:var(--color-muted);font-size:var(--text-sm)}.pixel{position:relative;display:block;overflow:hidden;border-radius:var(--radius)}.pixel-img{width:100%;height:auto}.pixel-canvas{position:absolute;inset:0;width:100%;height:100%;display:none}.pixel.is-pixelating .pixel-img{visibility:hidden}.pixel.is-pixelating .pixel-canvas{display:block}@property --p{syntax: "<number>"; inherits: true; initial-value: 0;}.asc{display:block;margin:0;--a: .4;--b: .6;--dur: .14;--rise: .55;--p: 0;filter:var(--asc-filter)}.asc svg{display:block;width:100%;height:auto;overflow:hidden}.asc.is-asc .asc-el{--o: calc(var(--g) / (var(--n) - 1));--e0: calc(var(--o) * (var(--a) - var(--dur)));--x0: calc(var(--b) + (1 - var(--o)) * (1 - var(--b) - var(--dur)));transform:translateY(calc(var(--vh) * var(--rise) * (1 - clamp(0,calc((var(--p) - var(--e0)) / var(--dur)),1) - clamp(0,calc((var(--p) - var(--x0)) / var(--dur)),1)) * 1px));opacity:clamp(0,calc(clamp(0,calc((var(--p) - var(--e0)) / var(--dur)),1) - clamp(0,calc((var(--p) - var(--x0)) / var(--dur)),1)),1)}.pub{display:grid;grid-template-columns:4.5rem 1fr;gap:var(--space-4);padding-block:var(--space-5);border-top:var(--border)}.year{color:var(--color-muted);font-size:var(--text-sm);padding-top:.2rem}.title{font-size:var(--text-lg);font-weight:600;letter-spacing:var(--tracking-tight)}.title a{text-decoration:underline;text-decoration-color:var(--color-accent);text-decoration-thickness:1px;text-underline-offset:.18em;transition:color var(--dur-fast) var(--ease-out)}.title a:hover{color:var(--color-accent)}.authors{margin-top:var(--space-2);font-size:var(--text-sm);color:var(--color-muted)}.authors .me{color:var(--color-fg);font-weight:600}.venue{margin-top:var(--space-1);color:var(--color-muted);font-size:var(--text-sm);font-style:italic}.links{display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-3);font-size:var(--text-sm)}.links a{color:var(--color-accent);transition:opacity var(--dur-fast) var(--ease-out)}.links a:hover{opacity:.7}.figure{margin-top:var(--space-5);width:100%;max-width:calc(30rem * var(--_fig-scale, 1))}.figure.portrait{max-width:calc(19rem * var(--_fig-scale, 1))}@media(max-width:560px){.pub{grid-template-columns:1fr;gap:var(--space-2)}}.talk{display:grid;grid-template-columns:4.5rem 1fr;gap:var(--space-4);padding-block:var(--space-4);border-top:var(--border)}.year{color:var(--color-muted);font-size:var(--text-sm);padding-top:.15rem}.title{font-size:var(--text-base);font-weight:600}.video{margin-left:var(--space-2);color:var(--color-accent);font-size:var(--text-sm);white-space:nowrap}.event{margin-top:var(--space-1);color:var(--color-muted);font-size:var(--text-sm)}@media(max-width:560px){.talk{grid-template-columns:1fr;gap:var(--space-1)}}.project{padding:var(--space-6);border:var(--border);border-radius:var(--radius);background:var(--color-surface);transition:border-color var(--dur-base) var(--ease-out)}.project:hover{border-color:color-mix(in srgb,var(--color-accent) 50%,var(--color-line))}.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-3)}.name{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700}.name a{transition:color var(--dur-fast) var(--ease-out)}.name a:hover{color:var(--color-accent)}.role{color:var(--color-accent);font-size:var(--text-sm)}.desc{margin-top:var(--space-3);color:var(--color-fg)}.highlights{margin-top:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);color:var(--color-muted);font-size:var(--text-sm)}.highlights li{padding-left:var(--space-4);position:relative}.highlights li:before{content:"—";position:absolute;left:0;color:var(--color-accent)}.item{display:grid;grid-template-columns:11rem 1fr;gap:var(--space-4);padding-block:var(--space-5);border-top:var(--border)}.period{color:var(--color-accent);font-size:var(--text-sm);padding-top:.2rem}.title{font-size:var(--text-lg);font-weight:600}.org{margin-top:var(--space-1);color:var(--color-fg);font-size:var(--text-sm)}.loc{color:var(--color-muted)}.sup{margin-top:var(--space-1);color:var(--color-muted);font-size:var(--text-sm)}.summary{margin-top:var(--space-3);color:var(--color-muted);max-width:60ch}.highlights{margin-top:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2);color:var(--color-muted);font-size:var(--text-sm)}.highlights li{padding-left:var(--space-4);position:relative}.highlights li:before{content:"—";position:absolute;left:0;color:var(--color-accent)}@media(max-width:560px){.item{grid-template-columns:1fr;gap:var(--space-2)}}.entry{padding-block:var(--space-5);border-top:var(--border)}.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-3)}.title{font-size:var(--text-base);font-weight:600}.link{color:var(--color-fg);transition:color var(--dur-fast) var(--ease-out)}.link:hover{color:var(--color-accent)}.arrow{color:var(--color-accent);font-size:var(--text-sm)}.meta{color:var(--color-muted);font-size:var(--text-sm)}.detail{margin-top:var(--space-2);color:var(--color-muted);max-width:64ch}.items{margin-top:var(--space-2);display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-4);color:var(--color-muted);font-size:var(--text-sm)}.lede{font-size:var(--text-lg);max-width:60ch;color:var(--color-fg)}.facts{margin-top:var(--space-6);display:grid;gap:var(--space-4);font-size:var(--text-sm)}.facts div{display:grid;grid-template-columns:9rem 1fr;gap:var(--space-3)}.facts dt{color:var(--color-muted);text-transform:uppercase;letter-spacing:.12em}.facts dd{color:var(--color-fg)}.group{margin-top:var(--space-7);margin-bottom:var(--space-2);color:var(--color-accent);text-transform:uppercase;letter-spacing:var(--tracking-wide);font-size:var(--text-sm)}.group:first-child{margin-top:0}.cards{display:grid;gap:var(--space-5);grid-template-columns:1fr}@media(min-width:720px){.cards{grid-template-columns:1fr 1fr}}
+
+
+/* Enhancements for entry tags, links, and figures */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  color: var(--color-muted);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius);
+}
+.facts div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.facts dt {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.facts dd {
+  font-size: var(--text-sm);
+  color: var(--color-fg);
+}
+
+/* Animations */
+[data-anima="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+[data-anima="fade-in"] {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-out);
+}
+[data-anima="split-lines"] {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.animated {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@keyframes pulse-signal {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+.signal-svg {
+  width: 100%;
+  height: 60px;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  fill: none;
+  animation: pulse-signal 4s ease-in-out infinite;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-inner u-container">
+        <a class="brand" href="#top" aria-label="Back to top">
+          SL<span class="dot">.</span>
+        </a>
+        <ul class="links u-mono">
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main">
+      <header id="top" class="hero u-container">
+        <p class="eyebrow u-mono" data-anima="fade-in">NEUROSCIENCE · DEEP LEARNING · BIOMECHANICS</p>
+        <h1 class="name" data-anima="split-lines">Simone Lin</h1>
+        <div class="meta">
+          <p class="role u-mono" data-anima="fade-up">Ph.D. Candidate — Theoretical & Applied Neuroscience</p>
+          <p class="tagline" data-anima="fade-up">AI-driven computational neuroscience, physiological signal processing, and behavioral modeling.</p>
+        </div>
+
+        <div class="signal" aria-hidden="true">
+          <svg class="signal-svg" viewBox="0 0 745 80" preserveAspectRatio="none" role="presentation">
+            <path d="M0 40 h40 l10 -15 l8 30 l12 -45 l10 32 l12 -12 h70 l12 -28 l10 54 l10 -42 l12 20 h60 l15 -25 l10 46 l10 -38 l12 18 h70 l12 22 l10 -46 l10 40 l12 -18 h60 l14 -30 l10 58 l11 -46 l11 20 h60 l10 -18 l10 34 l12 -28 l10 14 h60" vector-effect="non-scaling-stroke"></path>
+          </svg>
+        </div>
+      </header>
+
+      <section id="research" class="section u-container" aria-labelledby="research-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">01</span>
+          <h2 id="research-heading" class="section-title" data-anima="split-lines">Research</h2>
+        </div>
+        <div class="section-body">
+          <p class="lede" data-anima="fade-up">I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on developing automated pipelines for biomechanical analysis, applying contrastive learning and deep learning representations to clinical neural and behavioral data, and pushing the boundaries of translational neurophysiology.</p>
+          <dl class="facts u-mono" data-anima="fade-up">
+            
+    <div>
+      <dt>Affiliation</dt>
+      <dd>IIT@CTNSC · Univ. of Camerino & Ferrara</dd>
+    </div>
+    
+    <div>
+      <dt>Supervisor</dt>
+      <dd>Alessandro D’Ausilio</dd>
+    </div>
+    
+    <div>
+      <dt>Based in</dt>
+      <dd>Ferrara / Genoa, Italy</dd>
+    </div>
+    
+    <div>
+      <dt>Collaborations</dt>
+      <dd>KU & DTU (Denmark), Humanitas (Italy)</dd>
+    </div>
+    
+          </dl>
+        </div>
+      </section>
+
+      <section id="publications" class="section u-container" aria-labelledby="publications-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">02</span>
+          <h2 id="publications-heading" class="section-title" data-anima="split-lines">Publications</h2>
+        </div>
+        <div class="section-body">
+          <h3 class="group u-mono" data-anima="fade-in">Peer-Reviewed & Conference Abstracts</h3>
+          
+    <article class="pub" data-anima="fade-up">
+      <p class="year u-mono">2024</p>
+      <div class="main">
+        <h3 class="title">Utilizing power spectra and derivatives for deep learning-based prediction of ECG characteristics</h3>
+        <p class="authors u-mono"><span>Haggard L.</span>, <span class="me">Lin C. H. S.</span>, <span>Ferlay C. G.</span>, <span>Schoenmaker C.</span>, <span>Graff C.</span>, <span class="me">Linz D.</span>, <span>Thambavita V.</span>, <span>Nørregaard M.</span>, <span>Isaksen J. L.</span>, <span>Riegler M.</span>, <span>Kanters J. K.</span></p>
+        <p class="venue">Journal of Electrocardiology, 84, 20-21 (Abstract)</p>
+        <ul class="links u-mono" style="margin-top:0.5rem;"><li><a href="https://doi.org/10.1016/j.jelectrocard.2024.05.041" target="_blank" rel="noopener">DOI ↗</a></li></ul>
+      </div>
+    </article>
+    
+
+          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Work in Progress</h3>
+          
+    <article class="pub" data-anima="fade-up">
+      <p class="year u-mono">2025</p>
+      <div class="main">
+        <h3 class="title">KineMatrix: Automatic gait analysis with machine learning</h3>
+        <p class="authors u-mono"><span class="me">Lin C. H. S.</span>, <span>Outtaleb W.</span>, <span>Bellardita C.</span></p>
+        <p class="venue">Manuscript in preparation</p>
+      </div>
+    </article>
+    
+    <article class="pub" data-anima="fade-up">
+      <p class="year u-mono">2025</p>
+      <div class="main">
+        <h3 class="title">Novel gene therapy approach for pain relief</h3>
+        <p class="authors u-mono"><span>Goddard C. M.</span>, <span>Christensen E. K.</span>, <span class="me">Lin C. H. S.</span>, <span>Bellardita C.</span>, <span>Sørensen A. T.</span></p>
+        <p class="venue">Manuscript in preparation</p>
+      </div>
+    </article>
+    
+        </div>
+      </section>
+
+      <section id="experience" class="section u-container" aria-labelledby="experience-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">03</span>
+          <h2 id="experience-heading" class="section-title" data-anima="split-lines">Research Experience</h2>
+        </div>
+        <div class="section-body">
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">PhD Researcher</h3>
+        <p class="meta u-mono">Center for Translational Neurophysiology of Speech and Communication, IIT@CTNSC · 2025 – Present</p>
+      </div>
+      <p class="detail">Applying contrastive learning algorithms to clinical neural and behavioral data. PI: Alessandro D’Ausilio.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Research Assistant (Student Job)</h3>
+        <p class="meta u-mono">Neural Circuitries and Motor Repair Laboratory, University of Copenhagen · 2024 – 2025</p>
+      </div>
+      <p class="detail">Analyzed behavioral experimental pose data in MATLAB and Python. Engineered an automated pipeline for pose data analysis and feature extraction across healthy and pathological preclinical CNS models. PI: Carmelo Bellardita.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Research Project (Special Course)</h3>
+        <p class="meta u-mono">Danish Research Center for Magnetic Resonance (DRCMR) · 2024</p>
+      </div>
+      <p class="detail">Analyzed and extracted physiological features from clinical electromyographic (EMG) and accelerometer signals to assess reaction times during a psychological conflict task. PI: Lasse Christiansen.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Research Project (Special Course)</h3>
+        <p class="meta u-mono">Laboratory of Experimental Cardiology, University of Copenhagen · 2023</p>
+      </div>
+      <p class="detail">Extracted physiological features from electrocardiogram (ECG) signals using neural networks and evaluated model performance against ground truth with RMSE. PI: Jørgen K. Kanters.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Research Project (B.Sc. Thesis)</h3>
+        <p class="meta u-mono">Humanitas Research Hospital · 2022</p>
+      </div>
+      <p class="detail">Analyzed experimental effects of chemotherapeutic drugs on OCI-LY19 cancer cells. Implemented a mathematical model to fit human lymphoma cell response. PIs: Giustina Casagrande & Maria Laura Costantino.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Programming Internship (R&D)</h3>
+        <p class="meta u-mono">Agomir S.p.A. · 2018</p>
+      </div>
+      <p class="detail">Worked in R&D for IoT, Cloud, and Speech Recognition. Developed front-end applications using Ionic.</p>
+    </article>
+    
+        </div>
+      </section>
+
+      <section id="education" class="section u-container" aria-labelledby="education-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">04</span>
+          <h2 id="education-heading" class="section-title" data-anima="split-lines">Education</h2>
+        </div>
+        <div class="section-body">
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Ph.D. in Theoretical and Applied Neuroscience</h3>
+        <p class="meta u-mono">University of Camerino, University of Ferrara & IIT · 2025 – Present</p>
+      </div>
+      <p class="detail">Supervisor: Alessandro D’Ausilio.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">M.Sc. in Biomedical Engineering</h3>
+        <p class="meta u-mono">Technical University of Denmark (DTU) & University of Copenhagen (KU) · 2023 – 2025</p>
+      </div>
+      <p class="detail">Thesis: Computational Tool for Quantifying Movement Patterns: Linking Neural Activity to Behavior · Grade: 12 (Maximum Danish mark). Supervisors: Carmelo Bellardita, Silvia Tolu.</p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">B.Sc. in Biomedical Engineering</h3>
+        <p class="meta u-mono">Polytechnic University of Milan (Politecnico di Milano) · 2019 – 2023</p>
+      </div>
+      <p class="detail">Thesis: Individuation of a Mathematical Model to Describe Tumor Cell Growth Alterations When Subjected to Chemotherapeutic Drugs. Supervisors: Maria Laura Costantino, Giustina Casagrande.</p>
+    </article>
+    
+        </div>
+      </section>
+
+      <section id="projects" class="section u-container" aria-labelledby="projects-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">05</span>
+          <h2 id="projects-heading" class="section-title" data-anima="split-lines">Selected Projects</h2>
+        </div>
+        <div class="section-body">
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Microstructure analysis with confocal laser scanning microscopy</h3>
+        <p class="meta u-mono">DTU · 2024</p>
+      </div>
+      <div class="tags"><span class="tag">Microscopy</span><span class="tag">Image Analysis</span><span class="tag">FIJI</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Biomechanical modeling of the human aorta, tendon, and femur</h3>
+        <p class="meta u-mono">DTU · 2024</p>
+      </div>
+      <div class="tags"><span class="tag">COMSOL</span><span class="tag">Finite Element Analysis</span><span class="tag">Biomechanics</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Robot sensor integration and decision making</h3>
+        <p class="meta u-mono">DTU · 2024</p>
+      </div>
+      <div class="tags"><span class="tag">ROS2</span><span class="tag">RViz</span><span class="tag">Decision Algorithms</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Bio-inspired cerebellar controller for robotic arm</h3>
+        <p class="meta u-mono">DTU · 2024</p>
+      </div>
+      <div class="tags"><span class="tag">Bio-inspired AI</span><span class="tag">Cerebellum</span><span class="tag">Robotics</span><span class="tag">Control Theory</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Object recognition and probing with a stylus attached to a robotic arm</h3>
+        <p class="meta u-mono">DTU · 2023</p>
+      </div>
+      <div class="tags"><span class="tag">Computer Vision</span><span class="tag">Robotics</span><span class="tag">Sensors</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Modified Nodal Analysis (MNA) in Python</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs · 2022</p>
+      </div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Circuit Simulation</span><span class="tag">Open Source</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Mechanical analysis of the lower limb during motion on a rowing machine</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs · 2022</p>
+      </div>
+      <div class="tags"><span class="tag">Motion Capture</span><span class="tag">Biomechanics</span><span class="tag">Kinematics</span></div>
+    </article>
+    
+        </div>
+      </section>
+
+      <section id="skills" class="section u-container" aria-labelledby="skills-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">06</span>
+          <h2 id="skills-heading" class="section-title" data-anima="split-lines">Skills & Stack</h2>
+        </div>
+        <div class="section-body">
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Programming</h3>
+      </div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">R</span><span class="tag">C/C++</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">Arduino</span><span class="tag">Assembly</span><span class="tag">Bash</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Data Science & ML</h3>
+      </div>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Scikit-learn</span><span class="tag">OpenCV</span><span class="tag">Pandas</span><span class="tag">NumPy</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">AI Stack</h3>
+      </div>
+      <div class="tags"><span class="tag">Contrastive Learning</span><span class="tag">Energy-based Models</span><span class="tag">Transformers</span><span class="tag">Autoencoders</span><span class="tag">RAG</span><span class="tag">LLMs</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Bio & Engineering Tools</h3>
+      </div>
+      <div class="tags"><span class="tag">COMSOL</span><span class="tag">ROS2</span><span class="tag">RViz</span><span class="tag">FIJI</span><span class="tag">SolidWorks</span><span class="tag">EMG/ECG Signal Processing</span></div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Languages</h3>
+      </div>
+      <div class="tags"><span class="tag">Italian (Native)</span><span class="tag">English (C1 Fluent)</span><span class="tag">Chinese (B1)</span></div>
+    </article>
+    
+        </div>
+      </section>
+
+      <section id="teaching" class="section u-container" aria-labelledby="teaching-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">07</span>
+          <h2 id="teaching-heading" class="section-title" data-anima="split-lines">Teaching & Outreach</h2>
+        </div>
+        <div class="section-body">
+          <h3 class="group u-mono" data-anima="fade-in">Teaching</h3>
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Introduction to Numerical Methods in Python</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2023 (12 hours)</p>
+      </div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Introduction to Machine Learning with Keras</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2022 (4 hours)</p>
+      </div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Introduction to Arduino and IoT</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2022 (4 hours)</p>
+      </div>
+    </article>
+    
+
+          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Community Leadership</h3>
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Honorary Member</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs · 2023 – Present</p>
+      </div>
+      
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Secretary and Treasurer</h3>
+        <p class="meta u-mono">Politecnico Open unix Labs · 2022 – 2023</p>
+      </div>
+      <p class="detail">10 hours/week managing operations, finance, and community workshops.</p>
+    </article>
+    
+
+          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Conferences & Meetings</h3>
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">NAD Annual Meeting 2024</h3>
+        <p class="meta u-mono">Neuroscience Academy Denmark, Denmark · 2024</p>
+      </div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">IN-Retreat</h3>
+        <p class="meta u-mono">Copenhagen University, Denmark · 2024</p>
+      </div>
+    </article>
+    
+        </div>
+      </section>
+
+      <section id="references" class="section u-container" aria-labelledby="references-heading">
+        <div class="section-head">
+          <span class="section-index u-mono" aria-hidden="true">08</span>
+          <h2 id="references-heading" class="section-title" data-anima="split-lines">Academic References</h2>
+        </div>
+        <div class="section-body">
+          
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Prof. Alessandro D’Ausilio</h3>
+        <p class="meta u-mono">Full Professor</p>
+      </div>
+      <p class="detail">Dept. of Neuroscience and Rehabilitation, University of Ferrara</p>
+      <p class="detail u-mono" style="margin-top:0.25rem;">
+        <a href="mailto:alessandro.dausilio@unife.it" style="color:var(--color-accent);">alessandro.dausilio@unife.it</a>
+      </p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Assoc. Prof. Carmelo Bellardita</h3>
+        <p class="meta u-mono">Associate Professor</p>
+      </div>
+      <p class="detail">Dept. of Neuroscience, Copenhagen University (KU)</p>
+      <p class="detail u-mono" style="margin-top:0.25rem;">
+        <a href="mailto:cbellardita@sund.ku.dk" style="color:var(--color-accent);">cbellardita@sund.ku.dk</a>
+      </p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Assoc. Prof. Silvia Tolu</h3>
+        <p class="meta u-mono">Associate Professor</p>
+      </div>
+      <p class="detail">Dept. of Electrical and Photonics Engineering, Technical University of Denmark (DTU)</p>
+      <p class="detail u-mono" style="margin-top:0.25rem;">
+        <a href="mailto:stolu@dtu.dk" style="color:var(--color-accent);">stolu@dtu.dk</a>
+      </p>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Assoc. Prof. Lasse Christiansen</h3>
+        <p class="meta u-mono">Associate Professor</p>
+      </div>
+      <p class="detail">Danish Research Center for Magnetic Resonance (DRCMR)</p>
+      <p class="detail u-mono" style="margin-top:0.25rem;">
+        <a href="mailto:lassec@drcmr.dk" style="color:var(--color-accent);">lassec@drcmr.dk</a>
+      </p>
+    </article>
+    
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer u-container">
+      <div class="footer-top">
+        <a class="mail" href="mailto:simone.lin@iit.it" data-anima="fade-up">simone.lin@iit.it</a>
+        <ul class="links u-mono">
+          <li><a href="https://scholar.google.com" target="_blank" rel="noopener">Scholar ↗</a></li>
+          <li><a href="https://github.com/SimoneLin" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://orcid.org" target="_blank" rel="noopener">ORCID ↗</a></li>
+        </ul>
+      </div>
+      <p class="colophon u-mono">© 2026 Simone Lin · Built with Astro</p>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('[data-anima]').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

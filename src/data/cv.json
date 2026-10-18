@@ -1,0 +1,219 @@
+{
+  "name": "Simone Lin",
+  "initials": "SL",
+  "role": "Ph.D. Candidate — Theoretical & Applied Neuroscience",
+  "tagline": "AI-driven computational neuroscience, physiological signal processing, and behavioral modeling.",
+  "eyebrow": "NEUROSCIENCE · DEEP LEARNING · BIOMECHANICS",
+  "email": "simone.lin@iit.it",
+  "socials": {
+    "scholar": "https://scholar.google.com",
+    "github": "https://github.com/SimoneLin",
+    "linkedin": "https://linkedin.com",
+    "orcid": "https://orcid.org"
+  },
+  "research": {
+    "statement": "I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on developing automated pipelines for biomechanical analysis, applying contrastive learning and deep learning representations to clinical neural and behavioral data, and pushing the boundaries of translational neurophysiology.",
+    "facts": [
+      { "label": "Affiliation", "value": "IIT@CTNSC · Univ. of Camerino & Ferrara" },
+      { "label": "Supervisor", "value": "Alessandro D’Ausilio" },
+      { "label": "Based in", "value": "Ferrara / Genoa, Italy" },
+      { "label": "Collaborations", "value": "KU & DTU (Denmark), Humanitas (Italy)" }
+    ]
+  },
+  "publications": {
+    "published": [
+      {
+        "year": "2024",
+        "title": "Utilizing power spectra and derivatives for deep learning-based prediction of ECG characteristics",
+        "authors": ["Haggard L.", "Lin C. H. S.", "Ferlay C. G.", "Schoenmaker C.", "Graff C.", "Linz D.", "Thambavita V.", "Nørregaard M.", "Isaksen J. L.", "Riegler M.", "Kanters J. K."],
+        "venue": "Journal of Electrocardiology, 84, 20-21 (Abstract)",
+        "doi": "https://doi.org/10.1016/j.jelectrocard.2024.05.041"
+      }
+    ],
+    "in_progress": [
+      {
+        "year": "2025",
+        "title": "KineMatrix: Automatic gait analysis with machine learning",
+        "authors": ["Lin C. H. S.", "Outtaleb W.", "Bellardita C."],
+        "venue": "Manuscript in preparation",
+        "isLead": true
+      },
+      {
+        "year": "2025",
+        "title": "Novel gene therapy approach for pain relief",
+        "authors": ["Goddard C. M.", "Christensen E. K.", "Lin C. H. S.", "Bellardita C.", "Sørensen A. T."],
+        "venue": "Manuscript in preparation"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "period": "2025 – Present",
+      "role": "PhD Researcher",
+      "institution": "Center for Translational Neurophysiology of Speech and Communication, IIT@CTNSC",
+      "location": "Italy",
+      "details": "Applying contrastive learning algorithms to clinical neural and behavioral data. PI: Alessandro D’Ausilio."
+    },
+    {
+      "period": "2024 – 2025",
+      "role": "Research Assistant (Student Job)",
+      "institution": "Neural Circuitries and Motor Repair Laboratory, University of Copenhagen",
+      "location": "Denmark",
+      "details": "Analyzed behavioral experimental pose data in MATLAB and Python. Engineered an automated pipeline for pose data analysis and feature extraction across healthy and pathological preclinical CNS models. PI: Carmelo Bellardita."
+    },
+    {
+      "period": "2024",
+      "role": "Research Project (Special Course)",
+      "institution": "Danish Research Center for Magnetic Resonance (DRCMR)",
+      "location": "Denmark",
+      "details": "Analyzed and extracted physiological features from clinical electromyographic (EMG) and accelerometer signals to assess reaction times during a psychological conflict task. PI: Lasse Christiansen."
+    },
+    {
+      "period": "2023",
+      "role": "Research Project (Special Course)",
+      "institution": "Laboratory of Experimental Cardiology, University of Copenhagen",
+      "location": "Denmark",
+      "details": "Extracted physiological features from electrocardiogram (ECG) signals using neural networks and evaluated model performance against ground truth with RMSE. PI: Jørgen K. Kanters."
+    },
+    {
+      "period": "2022",
+      "role": "Research Project (B.Sc. Thesis)",
+      "institution": "Humanitas Research Hospital",
+      "location": "Milan, Italy",
+      "details": "Analyzed experimental effects of chemotherapeutic drugs on OCI-LY19 cancer cells. Implemented a mathematical model to fit human lymphoma cell response. PIs: Giustina Casagrande & Maria Laura Costantino."
+    },
+    {
+      "period": "2018",
+      "role": "Programming Internship (R&D)",
+      "institution": "Agomir S.p.A.",
+      "location": "Italy",
+      "details": "Worked in R&D for IoT, Cloud, and Speech Recognition. Developed front-end applications using Ionic."
+    }
+  ],
+  "education": [
+    {
+      "period": "2025 – Present",
+      "degree": "Ph.D. in Theoretical and Applied Neuroscience",
+      "institution": "University of Camerino, University of Ferrara & IIT",
+      "location": "Italy",
+      "details": "Supervisor: Alessandro D’Ausilio."
+    },
+    {
+      "period": "2023 – 2025",
+      "degree": "M.Sc. in Biomedical Engineering",
+      "institution": "Technical University of Denmark (DTU) & University of Copenhagen (KU)",
+      "location": "Denmark",
+      "details": "Thesis: Computational Tool for Quantifying Movement Patterns: Linking Neural Activity to Behavior · Grade: 12 (Maximum Danish mark). Supervisors: Carmelo Bellardita, Silvia Tolu."
+    },
+    {
+      "period": "2019 – 2023",
+      "degree": "B.Sc. in Biomedical Engineering",
+      "institution": "Polytechnic University of Milan (Politecnico di Milano)",
+      "location": "Italy",
+      "details": "Thesis: Individuation of a Mathematical Model to Describe Tumor Cell Growth Alterations When Subjected to Chemotherapeutic Drugs. Supervisors: Maria Laura Costantino, Giustina Casagrande."
+    }
+  ],
+  "projects": [
+    {
+      "year": "2024",
+      "title": "Microstructure analysis with confocal laser scanning microscopy",
+      "institution": "DTU",
+      "tags": ["Microscopy", "Image Analysis", "FIJI"]
+    },
+    {
+      "year": "2024",
+      "title": "Biomechanical modeling of the human aorta, tendon, and femur",
+      "institution": "DTU",
+      "tags": ["COMSOL", "Finite Element Analysis", "Biomechanics"]
+    },
+    {
+      "year": "2024",
+      "title": "Robot sensor integration and decision making",
+      "institution": "DTU",
+      "tags": ["ROS2", "RViz", "Decision Algorithms"]
+    },
+    {
+      "year": "2024",
+      "title": "Bio-inspired cerebellar controller for robotic arm",
+      "institution": "DTU",
+      "tags": ["Bio-inspired AI", "Cerebellum", "Robotics", "Control Theory"]
+    },
+    {
+      "year": "2023",
+      "title": "Object recognition and probing with a stylus attached to a robotic arm",
+      "institution": "DTU",
+      "tags": ["Computer Vision", "Robotics", "Sensors"]
+    },
+    {
+      "year": "2022",
+      "title": "Modified Nodal Analysis (MNA) in Python",
+      "institution": "Politecnico Open unix Labs",
+      "tags": ["Python", "Circuit Simulation", "Open Source"]
+    },
+    {
+      "year": "2022",
+      "title": "Mechanical analysis of the lower limb during motion on a rowing machine",
+      "institution": "Politecnico Open unix Labs",
+      "tags": ["Motion Capture", "Biomechanics", "Kinematics"]
+    }
+  ],
+  "teaching": [
+    {
+      "year": "2023",
+      "title": "Introduction to Numerical Methods in Python",
+      "venue": "Politecnico Open unix Labs, Italy",
+      "duration": "12 hours"
+    },
+    {
+      "year": "2022",
+      "title": "Introduction to Machine Learning with Keras",
+      "venue": "Politecnico Open unix Labs, Italy",
+      "duration": "4 hours"
+    },
+    {
+      "year": "2022",
+      "title": "Introduction to Arduino and IoT",
+      "venue": "Politecnico Open unix Labs, Italy",
+      "duration": "4 hours"
+    }
+  ],
+  "meetings": [
+    {
+      "year": "2024",
+      "title": "NAD Annual Meeting 2024",
+      "organizer": "Neuroscience Academy Denmark, Denmark"
+    },
+    {
+      "year": "2024",
+      "title": "IN-Retreat",
+      "organizer": "Copenhagen University, Denmark"
+    }
+  ],
+  "leadership": [
+    {
+      "period": "2023 – Present",
+      "role": "Honorary Member",
+      "organization": "Politecnico Open unix Labs"
+    },
+    {
+      "period": "2022 – 2023",
+      "role": "Secretary and Treasurer",
+      "organization": "Politecnico Open unix Labs",
+      "details": "10 hours/week managing operations, finance, and community workshops."
+    }
+  ],
+  "skills": [
+    { "category": "Programming", "items": ["Python", "MATLAB", "R", "C/C++", "Java", "SQL", "Arduino", "Assembly", "Bash"] },
+    { "category": "Data Science & ML", "items": ["PyTorch", "TensorFlow", "Keras", "Scikit-learn", "OpenCV", "Pandas", "NumPy"] },
+    { "category": "AI Stack", "items": ["Contrastive Learning", "Energy-based Models", "Transformers", "Autoencoders", "RAG", "LLMs"] },
+    { "category": "Bio & Engineering Tools", "items": ["COMSOL", "ROS2", "RViz", "FIJI", "SolidWorks", "EMG/ECG Signal Processing"] },
+    { "category": "Languages", "items": ["Italian (Native)", "English (C1 Fluent)", "Chinese (B1)"] }
+  ],
+  "references": [
+    { "name": "Prof. Alessandro D’Ausilio", "title": "Full Professor", "institution": "Dept. of Neuroscience and Rehabilitation, University of Ferrara", "email": "alessandro.dausilio@unife.it" },
+    { "name": "Assoc. Prof. Carmelo Bellardita", "title": "Associate Professor", "institution": "Dept. of Neuroscience, Copenhagen University (KU)", "email": "cbellardita@sund.ku.dk" },
+    { "name": "Assoc. Prof. Silvia Tolu", "title": "Associate Professor", "institution": "Dept. of Electrical and Photonics Engineering, Technical University of Denmark (DTU)", "email": "stolu@dtu.dk" },
+    { "name": "Assoc. Prof. Lasse Christiansen", "title": "Associate Professor", "institution": "Danish Research Center for Magnetic Resonance (DRCMR)", "email": "lassec@drcmr.dk" }
+  ]
+}
+

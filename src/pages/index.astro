@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import cv from '../data/cv.json';
+---
+
+<BaseLayout title={`${cv.name} — ${cv.role}`} description={cv.research.statement}>
+  <!-- Top Navigation -->
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner u-container">
+      <a class="brand" href="#top" aria-label="Back to top">
+        {cv.initials}<span class="dot">.</span>
+      </a>
+      <ul class="links u-mono">
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <header id="top" class="hero u-container">
+      <p class="eyebrow u-mono" data-anima="fade-in">{cv.eyebrow}</p>
+      <h1 class="name" data-anima="split-lines">{cv.name}</h1>
+      <div class="meta">
+        <p class="role u-mono" data-anima="fade-up">{cv.role}</p>
+        <p class="tagline" data-anima="fade-up">{cv.tagline}</p>
+      </div>
+
+      <!-- Neural / Physiological Signal decoration -->
+      <div class="signal" aria-hidden="true">
+        <svg class="signal-svg" viewBox="0 0 745 80" preserveAspectRatio="none" role="presentation">
+          <path d="M0 40 h40 l10 -15 l8 30 l12 -45 l10 32 l12 -12 h70 l12 -28 l10 54 l10 -42 l12 20 h60 l15 -25 l10 46 l10 -38 l12 18 h70 l12 22 l10 -46 l10 40 l12 -18 h60 l14 -30 l10 58 l11 -46 l11 20 h60 l10 -18 l10 34 l12 -28 l10 14 h60" vector-effect="non-scaling-stroke"></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- 01 Research -->
+    <section id="research" class="section u-container" aria-labelledby="research-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">01</span>
+        <h2 id="research-heading" class="section-title" data-anima="split-lines">Research</h2>
+      </div>
+      <div class="section-body">
+        <p class="lede" data-anima="fade-up">{cv.research.statement}</p>
+        <dl class="facts u-mono" data-anima="fade-up">
+          {cv.research.facts.map((fact) => (
+            <div>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- 02 Publications -->
+    <section id="publications" class="section u-container" aria-labelledby="publications-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">02</span>
+        <h2 id="publications-heading" class="section-title" data-anima="split-lines">Publications</h2>
+      </div>
+      <div class="section-body">
+        <h3 class="group u-mono" data-anima="fade-in">Peer-Reviewed & Conference Abstracts</h3>
+        {cv.publications.published.map((pub) => (
+          <article class="pub" data-anima="fade-up">
+            <p class="year u-mono">{pub.year}</p>
+            <div class="main">
+              <h3 class="title">{pub.title}</h3>
+              <p class="authors u-mono">
+                {pub.authors.map((author, idx) => (
+                  <span class={author.includes("Lin") ? "me" : ""}>
+                    {author}{idx < pub.authors.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+              </p>
+              <p class="venue">{pub.venue}</p>
+              {pub.doi && (
+                <ul class="links u-mono" style="margin-top: 0.5rem;">
+                  <li>
+                    <a href={pub.doi} target="_blank" rel="noopener">DOI ↗</a>
+                  </li>
+                </ul>
+              )}
+            </div>
+          </article>
+        ))}
+
+        <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Work in Progress</h3>
+        {cv.publications.in_progress.map((pub) => (
+          <article class="pub" data-anima="fade-up">
+            <p class="year u-mono">{pub.year}</p>
+            <div class="main">
+              <h3 class="title">{pub.title}</h3>
+              <p class="authors u-mono">
+                {pub.authors.map((author, idx) => (
+                  <span class={author.includes("Lin") ? "me" : ""}>
+                    {author}{idx < pub.authors.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+              </p>
+              <p class="venue">{pub.venue}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 03 Experience -->
+    <section id="experience" class="section u-container" aria-labelledby="experience-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">03</span>
+        <h2 id="experience-heading" class="section-title" data-anima="split-lines">Research Experience</h2>
+      </div>
+      <div class="section-body">
+        {cv.experience.map((exp) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{exp.role}</h3>
+              <p class="meta u-mono">{exp.institution} · {exp.period}</p>
+            </div>
+            <p class="detail">{exp.details}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 04 Education -->
+    <section id="education" class="section u-container" aria-labelledby="education-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">04</span>
+        <h2 id="education-heading" class="section-title" data-anima="split-lines">Education</h2>
+      </div>
+      <div class="section-body">
+        {cv.education.map((edu) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{edu.degree}</h3>
+              <p class="meta u-mono">{edu.institution} · {edu.period}</p>
+            </div>
+            <p class="detail">{edu.details}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 05 Projects -->
+    <section id="projects" class="section u-container" aria-labelledby="projects-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">05</span>
+        <h2 id="projects-heading" class="section-title" data-anima="split-lines">Selected Projects</h2>
+      </div>
+      <div class="section-body">
+        {cv.projects.map((proj) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{proj.title}</h3>
+              <p class="meta u-mono">{proj.institution} · {proj.year}</p>
+            </div>
+            <div class="tags">
+              {proj.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 06 Skills -->
+    <section id="skills" class="section u-container" aria-labelledby="skills-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">06</span>
+        <h2 id="skills-heading" class="section-title" data-anima="split-lines">Skills & Stack</h2>
+      </div>
+      <div class="section-body">
+        {cv.skills.map((skillGroup) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{skillGroup.category}</h3>
+            </div>
+            <div class="tags">
+              {skillGroup.items.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 07 Teaching & Outreach -->
+    <section id="teaching" class="section u-container" aria-labelledby="teaching-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">07</span>
+        <h2 id="teaching-heading" class="section-title" data-anima="split-lines">Teaching & Outreach</h2>
+      </div>
+      <div class="section-body">
+        <h3 class="group u-mono" data-anima="fade-in">Teaching</h3>
+        {cv.teaching.map((t) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{t.title}</h3>
+              <p class="meta u-mono">{t.venue} · {t.year} ({t.duration})</p>
+            </div>
+          </article>
+        ))}
+
+        <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Community Leadership</h3>
+        {cv.leadership.map((l) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{l.role}</h3>
+              <p class="meta u-mono">{l.organization} · {l.period}</p>
+            </div>
+            {l.details && <p class="detail">{l.details}</p>}
+          </article>
+        ))}
+
+        <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Conferences & Meetings</h3>
+        {cv.meetings.map((m) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{m.title}</h3>
+              <p class="meta u-mono">{m.organizer} · {m.year}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 08 References -->
+    <section id="references" class="section u-container" aria-labelledby="references-heading">
+      <div class="section-head">
+        <span class="section-index u-mono" aria-hidden="true">08</span>
+        <h2 id="references-heading" class="section-title" data-anima="split-lines">Academic References</h2>
+      </div>
+      <div class="section-body">
+        {cv.references.map((ref) => (
+          <article class="entry" data-anima="fade-up">
+            <div class="head">
+              <h3 class="title">{ref.name}</h3>
+              <p class="meta u-mono">{ref.title}</p>
+            </div>
+            <p class="detail">{ref.institution}</p>
+            <p class="detail u-mono" style="margin-top: 0.25rem;">
+              <a href={`mailto:${ref.email}`} style="color: var(--color-accent);">{ref.email}</a>
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer u-container">
+    <div class="footer-top">
+      <a class="mail" href={`mailto:${cv.email}`} data-anima="fade-up">{cv.email}</a>
+      <ul class="links u-mono">
+        <li><a href={cv.socials.scholar} target="_blank" rel="noopener">Scholar ↗</a></li>
+        <li><a href={cv.socials.github} target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href={cv.socials.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href={cv.socials.orcid} target="_blank" rel="noopener">ORCID ↗</a></li>
+      </ul>
+    </div>
+    <p class="colophon u-mono">© {new Date().getFullYear()} {cv.name} · Built with Astro</p>
+  </footer>
+</BaseLayout>
+
