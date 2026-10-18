@@ -1,6 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import cv from '../data/cv.json';
+
+const isMe = (author: string) => {
+  return /\bLin\b/i.test(author);
+};
+
+const formatDetails = (text: string) => {
+  if (!text) return { body: '', supervisor: '' };
+  // Matches PI: ..., PIs: ..., Supervisor: ..., Supervisors: ...
+  const match = text.match(/(.*?)(?:(?:\. |\s+|^)(PIs?|Supervisors?):\s*([^.]+?)(?:\.|$))/i);
+  if (match) {
+    const body = match[1].trim();
+    const role = match[2];
+    const names = match[3].trim();
+    return { body, supervisor: `${role}: ${names}` };
+  }
+  return { body: text, supervisor: '' };
+};
 ---
 
 <BaseLayout title={`${cv.name} — ${cv.role}`} description={cv.research.statement}>
@@ -74,7 +91,7 @@ import cv from '../data/cv.json';
               <h3 class="title">{pub.title}</h3>
               <p class="authors u-mono">
                 {pub.authors.map((author, idx) => (
-                  <span class={author.includes("Lin") ? "me" : ""}>
+                  <span class={isMe(author) ? "me" : ""}>
                     {author}{idx < pub.authors.length - 1 ? ", " : ""}
                   </span>
                 ))}
@@ -99,7 +116,7 @@ import cv from '../data/cv.json';
               <h3 class="title">{pub.title}</h3>
               <p class="authors u-mono">
                 {pub.authors.map((author, idx) => (
-                  <span class={author.includes("Lin") ? "me" : ""}>
+                  <span class={isMe(author) ? "me" : ""}>
                     {author}{idx < pub.authors.length - 1 ? ", " : ""}
                   </span>
                 ))}
@@ -118,15 +135,24 @@ import cv from '../data/cv.json';
         <h2 id="experience-heading" class="section-title" data-anima="split-lines">Research Experience</h2>
       </div>
       <div class="section-body">
-        {cv.experience.map((exp) => (
-          <article class="entry" data-anima="fade-up">
-            <div class="head">
-              <h3 class="title">{exp.role}</h3>
-              <p class="meta u-mono">{exp.institution} · {exp.period}</p>
-            </div>
-            <p class="detail">{exp.details}</p>
-          </article>
-        ))}
+        {cv.experience.map((exp) => {
+          const { body, supervisor } = formatDetails(exp.details);
+          return (
+            <article class="entry" data-anima="fade-up">
+              <div class="head">
+                <h3 class="title">{exp.role}</h3>
+                <p class="meta u-mono">{exp.institution} · {exp.period}</p>
+              </div>
+              {body && <p class="detail">{body}</p>}
+              {supervisor && (
+                <div class="supervisor-badge u-mono">
+                  <span class="supervisor-icon">◈</span>
+                  <span>{supervisor}</span>
+                </div>
+              )}
+            </article>
+          );
+        })}
       </div>
     </section>
 
@@ -137,15 +163,24 @@ import cv from '../data/cv.json';
         <h2 id="education-heading" class="section-title" data-anima="split-lines">Education</h2>
       </div>
       <div class="section-body">
-        {cv.education.map((edu) => (
-          <article class="entry" data-anima="fade-up">
-            <div class="head">
-              <h3 class="title">{edu.degree}</h3>
-              <p class="meta u-mono">{edu.institution} · {edu.period}</p>
-            </div>
-            <p class="detail">{edu.details}</p>
-          </article>
-        ))}
+        {cv.education.map((edu) => {
+          const { body, supervisor } = formatDetails(edu.details);
+          return (
+            <article class="entry" data-anima="fade-up">
+              <div class="head">
+                <h3 class="title">{edu.degree}</h3>
+                <p class="meta u-mono">{edu.institution} · {edu.period}</p>
+              </div>
+              {body && <p class="detail">{body}</p>}
+              {supervisor && (
+                <div class="supervisor-badge u-mono">
+                  <span class="supervisor-icon">◈</span>
+                  <span>{supervisor}</span>
+                </div>
+              )}
+            </article>
+          );
+        })}
       </div>
     </section>
 

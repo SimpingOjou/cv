@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <title>Simone Lin — Ph.D. Candidate — Theoretical & Applied Neuroscience</title>
-    <meta name="description" content="I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on developing automated pipelines for biomechanical analysis, applying contrastive learning and deep learning representations to clinical neural and behavioral data, and pushing the boundaries of translational neurophysiology." />
+    <title>Simone (Chang Hui) Lin — Ph.D. Candidate — Theoretical & Applied Neuroscience</title>
+    <meta name="description" content="I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on using contrastive learning and deep learning representations to analyze clinical neural and behavioral data, aiming to uncover the underlying mechanisms of human motor control and its disorders." />
     <meta name="theme-color" content="#0b0b0d" />
     <style>
 /* Base Design Tokens & Reset */
@@ -141,6 +141,26 @@ ul, ol {
   color: var(--color-muted);
 }
 
+/* Supervisor / PI Badge Box */
+.supervisor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  background: color-mix(in srgb, var(--color-surface) 90%, var(--color-accent) 10%);
+  border: 1px solid color-mix(in srgb, var(--color-line) 75%, var(--color-accent) 25%);
+  border-radius: var(--radius);
+  color: var(--color-fg);
+  line-height: 1.4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.supervisor-badge .supervisor-icon {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+}
+
 .facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -187,6 +207,16 @@ ul, ol {
   transform: none !important;
 }
 
+/* Hero section name styling */
+.hero .name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 1.5rem + 6.5vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--color-fg);
+}
+
 @keyframes pulse-signal {
   0%, 100% { opacity: 0.75; }
   50% { opacity: 1; }
@@ -225,11 +255,11 @@ ul, ol {
 
     <main id="main">
       <header id="top" class="hero u-container">
-        <p class="eyebrow u-mono" data-anima="fade-in">NEUROSCIENCE · DEEP LEARNING · BIOMECHANICS</p>
-        <h1 class="name" data-anima="split-lines">Simone Lin</h1>
+        <p class="eyebrow u-mono" data-anima="fade-in">COMPUTATIONAL NEUROSCIENCE · DEEP LEARNING · BIOMECHANICS</p>
+        <h1 class="name" data-anima="split-lines">Simone (Chang Hui) Lin</h1>
         <div class="meta">
           <p class="role u-mono" data-anima="fade-up">Ph.D. Candidate — Theoretical & Applied Neuroscience</p>
-          <p class="tagline" data-anima="fade-up">AI-driven computational neuroscience, physiological signal processing, and behavioral modeling.</p>
+          <p class="tagline" data-anima="fade-up">Neuroscience, Time Series Analysis, and Motor Control.</p>
         </div>
 
         <div class="signal" aria-hidden="true">
@@ -245,7 +275,7 @@ ul, ol {
           <h2 id="research-heading" class="section-title" data-anima="split-lines">Research</h2>
         </div>
         <div class="section-body">
-          <p class="lede" data-anima="fade-up">I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on developing automated pipelines for biomechanical analysis, applying contrastive learning and deep learning representations to clinical neural and behavioral data, and pushing the boundaries of translational neurophysiology.</p>
+          <p class="lede" data-anima="fade-up">I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on using contrastive learning and deep learning representations to analyze clinical neural and behavioral data, aiming to uncover the underlying mechanisms of human motor control and its disorders.</p>
           <dl class="facts u-mono" data-anima="fade-up">
             
     <div>
@@ -255,17 +285,12 @@ ul, ol {
     
     <div>
       <dt>Supervisor</dt>
-      <dd>Alessandro D’Ausilio</dd>
+      <dd>Alessandro D'Ausilio</dd>
     </div>
     
     <div>
       <dt>Based in</dt>
-      <dd>Ferrara / Genoa, Italy</dd>
-    </div>
-    
-    <div>
-      <dt>Collaborations</dt>
-      <dd>KU & DTU (Denmark), Humanitas (Italy)</dd>
+      <dd>Ferrara, Italy</dd>
     </div>
     
           </dl>
@@ -284,7 +309,7 @@ ul, ol {
       <p class="year u-mono">2024</p>
       <div class="main">
         <h3 class="title">Utilizing power spectra and derivatives for deep learning-based prediction of ECG characteristics</h3>
-        <p class="authors u-mono"><span>Haggard L.</span>, <span class="me">Lin C. H. S.</span>, <span>Ferlay C. G.</span>, <span>Schoenmaker C.</span>, <span>Graff C.</span>, <span class="me">Linz D.</span>, <span>Thambavita V.</span>, <span>Nørregaard M.</span>, <span>Isaksen J. L.</span>, <span>Riegler M.</span>, <span>Kanters J. K.</span></p>
+        <p class="authors u-mono"><span>Haggard L.</span>, <span class="me">Lin C. H. S.</span>, <span>Ferlay C. G.</span>, <span>Schoenmaker C.</span>, <span>Graff C.</span>, <span>Linz D.</span>, <span>Thambavita V.</span>, <span>Nørregaard M.</span>, <span>Isaksen J. L.</span>, <span>Riegler M.</span>, <span>Kanters J. K.</span></p>
         <p class="venue">Journal of Electrocardiology, 84, 20-21 (Abstract)</p>
         <ul class="links u-mono" style="margin-top:0.5rem;"><li><a href="https://doi.org/10.1016/j.jelectrocard.2024.05.041" target="_blank" rel="noopener">DOI ↗</a></li></ul>
       </div>
@@ -294,20 +319,11 @@ ul, ol {
           <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Work in Progress</h3>
           
     <article class="pub" data-anima="fade-up">
-      <p class="year u-mono">2025</p>
+      <p class="year u-mono">2026</p>
       <div class="main">
-        <h3 class="title">KineMatrix: Automatic gait analysis with machine learning</h3>
-        <p class="authors u-mono"><span class="me">Lin C. H. S.</span>, <span>Outtaleb W.</span>, <span>Bellardita C.</span></p>
-        <p class="venue">Manuscript in preparation</p>
-      </div>
-    </article>
-    
-    <article class="pub" data-anima="fade-up">
-      <p class="year u-mono">2025</p>
-      <div class="main">
-        <h3 class="title">Novel gene therapy approach for pain relief</h3>
-        <p class="authors u-mono"><span>Goddard C. M.</span>, <span>Christensen E. K.</span>, <span class="me">Lin C. H. S.</span>, <span>Bellardita C.</span>, <span>Sørensen A. T.</span></p>
-        <p class="venue">Manuscript in preparation</p>
+        <h3 class="title">Contrastive Learning Reveals Distinct Temporal Timescales for Task Execution and Adaptation in Robot-Assisted Reaching</h3>
+        <p class="authors u-mono"><span class="me">Lin C. H. S.</span>, <span>Corsini A.</span>, <span>Oliveira Da Silva Filho G.</span>, <span>Koul A.</span>, <span>D'Ausilio A.</span></p>
+        <p class="venue">Conference abstract submitted to the 2026 European Congress of Physiology FEPS-SIF </p>
       </div>
     </article>
     
@@ -324,49 +340,46 @@ ul, ol {
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">PhD Researcher</h3>
-        <p class="meta u-mono">Center for Translational Neurophysiology of Speech and Communication, IIT@CTNSC · 2025 – Present</p>
+        <p class="meta u-mono">Center for Translational Neurophysiology of Speech and Communication, IIT@CTNSC · 2025 - Present</p>
       </div>
-      <p class="detail">Applying contrastive learning algorithms to clinical neural and behavioral data. PI: Alessandro D’Ausilio.</p>
+      <p class="detail">Applying contrastive learning algorithms to clinical neural and behavioral data</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>PI: Alessandro D'Ausilio</span></div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Research Assistant (Student Job)</h3>
-        <p class="meta u-mono">Neural Circuitries and Motor Repair Laboratory, University of Copenhagen · 2024 – 2025</p>
+        <h3 class="title">Laboratory Assistant</h3>
+        <p class="meta u-mono">Neural Circuitries and Motor Repair Laboratory, University of Copenhagen · 2024 - 2025</p>
       </div>
-      <p class="detail">Analyzed behavioral experimental pose data in MATLAB and Python. Engineered an automated pipeline for pose data analysis and feature extraction across healthy and pathological preclinical CNS models. PI: Carmelo Bellardita.</p>
+      <p class="detail">Analyzed behavioral experimental pose data in MATLAB and Python. Engineered an automated pipeline for pose data analysis and feature extraction across healthy and pathological preclinical CNS models</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>PI: Carmelo Bellardita</span></div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Research Project (Special Course)</h3>
+        <h3 class="title">Research Intern</h3>
         <p class="meta u-mono">Danish Research Center for Magnetic Resonance (DRCMR) · 2024</p>
       </div>
-      <p class="detail">Analyzed and extracted physiological features from clinical electromyographic (EMG) and accelerometer signals to assess reaction times during a psychological conflict task. PI: Lasse Christiansen.</p>
+      <p class="detail">Analyzed and extracted physiological features from clinical electromyographic (EMG) and accelerometer signals to assess reaction times during a psychological conflict task</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>PI: Lasse Christiansen</span></div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Research Project (Special Course)</h3>
+        <h3 class="title">Research Intern</h3>
         <p class="meta u-mono">Laboratory of Experimental Cardiology, University of Copenhagen · 2023</p>
       </div>
-      <p class="detail">Extracted physiological features from electrocardiogram (ECG) signals using neural networks and evaluated model performance against ground truth with RMSE. PI: Jørgen K. Kanters.</p>
+      <p class="detail">Extracted physiological features from electrocardiogram (ECG) signals using neural networks and evaluated model performance against ground truth with RMSE</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>PI: Jørgen K</span></div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Research Project (B.Sc. Thesis)</h3>
+        <h3 class="title">Bachelor Research Intern</h3>
         <p class="meta u-mono">Humanitas Research Hospital · 2022</p>
       </div>
-      <p class="detail">Analyzed experimental effects of chemotherapeutic drugs on OCI-LY19 cancer cells. Implemented a mathematical model to fit human lymphoma cell response. PIs: Giustina Casagrande & Maria Laura Costantino.</p>
-    </article>
-    
-    <article class="entry" data-anima="fade-up">
-      <div class="head">
-        <h3 class="title">Programming Internship (R&D)</h3>
-        <p class="meta u-mono">Agomir S.p.A. · 2018</p>
-      </div>
-      <p class="detail">Worked in R&D for IoT, Cloud, and Speech Recognition. Developed front-end applications using Ionic.</p>
+      <p class="detail">Analyzed experimental effects of chemotherapeutic drugs on OCI-LY19 cancer cells. Implemented a mathematical model to fit human lymphoma cell response</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>PIs: Giustina Casagrande & Maria Laura Costantino</span></div>
     </article>
     
         </div>
@@ -382,25 +395,28 @@ ul, ol {
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">Ph.D. in Theoretical and Applied Neuroscience</h3>
-        <p class="meta u-mono">University of Camerino, University of Ferrara & IIT · 2025 – Present</p>
+        <p class="meta u-mono">University of Camerino, University of Ferrara & IIT · 2025 - Present</p>
       </div>
-      <p class="detail">Supervisor: Alessandro D’Ausilio.</p>
+      
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisor: Alessandro D'Ausilio</span></div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">M.Sc. in Biomedical Engineering</h3>
-        <p class="meta u-mono">Technical University of Denmark (DTU) & University of Copenhagen (KU) · 2023 – 2025</p>
+        <p class="meta u-mono">Technical University of Denmark (DTU) & University of Copenhagen (KU) · 2023 - 2025</p>
       </div>
-      <p class="detail">Thesis: Computational Tool for Quantifying Movement Patterns: Linking Neural Activity to Behavior · Grade: 12 (Maximum Danish mark). Supervisors: Carmelo Bellardita, Silvia Tolu.</p>
+      <p class="detail">Thesis: Computational Tool for Quantifying Movement Patterns: Linking Neural Activity to Behavior · Grade: 12 (Maximum Danish mark)</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisors: Carmelo Bellardita, Silvia Tolu</span></div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">B.Sc. in Biomedical Engineering</h3>
-        <p class="meta u-mono">Polytechnic University of Milan (Politecnico di Milano) · 2019 – 2023</p>
+        <p class="meta u-mono">Polytechnic University of Milan · 2019 - 2023</p>
       </div>
-      <p class="detail">Thesis: Individuation of a Mathematical Model to Describe Tumor Cell Growth Alterations When Subjected to Chemotherapeutic Drugs. Supervisors: Maria Laura Costantino, Giustina Casagrande.</p>
+      <p class="detail">Thesis: Individuation of a Mathematical Model to Describe Tumor Cell Growth Alterations When Subjected to Chemotherapeutic Drugs</p>
+      <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisors: Maria Laura Costantino, Giustina Casagrande</span></div>
     </article>
     
         </div>
@@ -443,30 +459,6 @@ ul, ol {
         <p class="meta u-mono">DTU · 2024</p>
       </div>
       <div class="tags"><span class="tag">Bio-inspired AI</span><span class="tag">Cerebellum</span><span class="tag">Robotics</span><span class="tag">Control Theory</span></div>
-    </article>
-    
-    <article class="entry" data-anima="fade-up">
-      <div class="head">
-        <h3 class="title">Object recognition and probing with a stylus attached to a robotic arm</h3>
-        <p class="meta u-mono">DTU · 2023</p>
-      </div>
-      <div class="tags"><span class="tag">Computer Vision</span><span class="tag">Robotics</span><span class="tag">Sensors</span></div>
-    </article>
-    
-    <article class="entry" data-anima="fade-up">
-      <div class="head">
-        <h3 class="title">Modified Nodal Analysis (MNA) in Python</h3>
-        <p class="meta u-mono">Politecnico Open unix Labs · 2022</p>
-      </div>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Circuit Simulation</span><span class="tag">Open Source</span></div>
-    </article>
-    
-    <article class="entry" data-anima="fade-up">
-      <div class="head">
-        <h3 class="title">Mechanical analysis of the lower limb during motion on a rowing machine</h3>
-        <p class="meta u-mono">Politecnico Open unix Labs · 2022</p>
-      </div>
-      <div class="tags"><span class="tag">Motion Capture</span><span class="tag">Biomechanics</span><span class="tag">Kinematics</span></div>
     </article>
     
         </div>
@@ -527,21 +519,42 @@ ul, ol {
           
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Introduction to Numerical Methods in Python</h3>
+        <h3 class="title">Physics for Medicine</h3>
+        <p class="meta u-mono">University of Ferrara, Italy · 2026 (30 hours)</p>
+      </div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Calculus I</h3>
+        <p class="meta u-mono">University of Ferrara, Italy · 2026 (30 hours)</p>
+      </div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Information Theory and Mathematics</h3>
+        <p class="meta u-mono">University of Ferrara, Italy · 2026 (30 hours)</p>
+      </div>
+    </article>
+    
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">Numerical Methods in Python</h3>
         <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2023 (12 hours)</p>
       </div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Introduction to Machine Learning with Keras</h3>
+        <h3 class="title">Machine Learning with Keras</h3>
         <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2022 (4 hours)</p>
       </div>
     </article>
     
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Introduction to Arduino and IoT</h3>
+        <h3 class="title">Arduino and IoT</h3>
         <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2022 (4 hours)</p>
       </div>
     </article>
@@ -552,7 +565,7 @@ ul, ol {
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">Honorary Member</h3>
-        <p class="meta u-mono">Politecnico Open unix Labs · 2023 – Present</p>
+        <p class="meta u-mono">Politecnico Open unix Labs · 2023 - Present</p>
       </div>
       
     </article>
@@ -560,7 +573,7 @@ ul, ol {
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">Secretary and Treasurer</h3>
-        <p class="meta u-mono">Politecnico Open unix Labs · 2022 – 2023</p>
+        <p class="meta u-mono">Politecnico Open unix Labs · 2022 - 2023</p>
       </div>
       <p class="detail">10 hours/week managing operations, finance, and community workshops.</p>
     </article>
@@ -568,6 +581,13 @@ ul, ol {
 
           <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Conferences & Meetings</h3>
           
+    <article class="entry" data-anima="fade-up">
+      <div class="head">
+        <h3 class="title">European Congress of Physiology: FEPS-SIF 2026</h3>
+        <p class="meta u-mono">Brescia, Italy · 2026</p>
+      </div>
+    </article>
+    
     <article class="entry" data-anima="fade-up">
       <div class="head">
         <h3 class="title">NAD Annual Meeting 2024</h3>
@@ -594,7 +614,7 @@ ul, ol {
           
     <article class="entry" data-anima="fade-up">
       <div class="head">
-        <h3 class="title">Prof. Alessandro D’Ausilio</h3>
+        <h3 class="title">Prof. Alessandro D'Ausilio</h3>
         <p class="meta u-mono">Full Professor</p>
       </div>
       <p class="detail">Dept. of Neuroscience and Rehabilitation, University of Ferrara</p>
@@ -642,15 +662,12 @@ ul, ol {
 
     <footer id="contact" class="footer u-container">
       <div class="footer-top">
-        <a class="mail" href="mailto:simone.lin@iit.it" data-anima="fade-up">simone.lin@iit.it</a>
+        <a class="mail" href="mailto:lnicng@unife.it" data-anima="fade-up">lnicng@unife.it</a>
         <ul class="links u-mono">
-          <li><a href="https://scholar.google.com" target="_blank" rel="noopener">Scholar ↗</a></li>
-          <li><a href="https://github.com/SimoneLin" target="_blank" rel="noopener">GitHub ↗</a></li>
-          <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-          <li><a href="https://orcid.org" target="_blank" rel="noopener">ORCID ↗</a></li>
+          <li><a href="https://github.com/SimpingOjou" target="_blank" rel="noopener">GitHub ↗</a></li><li><a href="https://www.linkedin.com/in/simone-lin-a080ab28b" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         </ul>
       </div>
-      <p class="colophon u-mono">© 2026 Simone Lin · Built with Astro</p>
+      <p class="colophon u-mono">© 2026 Simone (Chang Hui) Lin · Built with Astro</p>
     </footer>
 
     <script>

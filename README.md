@@ -1,10 +1,6 @@
 # Simone Lin — Academic CV Website
 
-A minimalist, editorial academic website inspired by [pierregtch.github.io](https://pierregtch.github.io/). Built with [Astro](https://astro.build/) and structured for easy content updating.
-
-## 🚀 Live Preview Right Now
-A self-contained preview has already been compiled in this directory:
-- Simply double click or open [`preview.html`](preview.html) in your browser!
+A minimalist, editorial academic website built with [Astro](https://astro.build/) and structured for easy content updating.
 
 ---
 
@@ -20,7 +16,7 @@ A self-contained preview has already been compiled in this directory:
 │   └── favicon.svg              # Custom "SL." SVG icon
 └── src/
     ├── data/
-    │   └── cv.json              # 👈 ALL YOUR CV CONTENT IS CONFIGURED HERE!
+    │   └── cv.json              # CV content
     ├── layouts/
     │   └── BaseLayout.astro     # Core HTML shell & SEO tags
     ├── pages/

@@ -131,6 +131,26 @@ ul, ol {
   color: var(--color-muted);
 }
 
+/* Supervisor / PI Badge Box */
+.supervisor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  background: color-mix(in srgb, var(--color-surface) 90%, var(--color-accent) 10%);
+  border: 1px solid color-mix(in srgb, var(--color-line) 75%, var(--color-accent) 25%);
+  border-radius: var(--radius);
+  color: var(--color-fg);
+  line-height: 1.4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.supervisor-badge .supervisor-icon {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+}
+
 .facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -175,6 +195,16 @@ ul, ol {
 .animated {
   opacity: 1 !important;
   transform: none !important;
+}
+
+/* Hero section name styling */
+.hero .name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 1.5rem + 6.5vw, 6.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--color-fg);
 }
 
 @keyframes pulse-signal {
