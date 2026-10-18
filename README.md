@@ -2,6 +2,22 @@
 
 A minimalist, editorial academic website built with [Astro](https://astro.build/) and structured for easy content updating.
 
+🔗 **Live Website**: [**https://simpingojou.github.io/cv/**](https://simpingojou.github.io/cv/)
+
+---
+
+## ⚡ Instant Local Preview (`preview.html`)
+
+You can preview your website offline at any time without needing Node.js or any local dev server:
+
+1. **Open in browser**: Simply double-click [`preview.html`](preview.html) (or right click ➔ *Open With* ➔ your favorite browser).
+2. **Recompiling the preview after editing `src/data/cv.json`**:
+   Whenever you edit your CV data in [`src/data/cv.json`](src/data/cv.json) or styles in [`src/styles/global.css`](src/styles/global.css), regenerate the preview with a single command:
+   ```bash
+   python3 build_preview.py
+   ```
+   This will immediately rebuild [`preview.html`](preview.html) with all your latest changes, PIs/supervisors boxes, and publications formatting.
+
 ---
 
 ## 🛠️ Project Structure
@@ -9,14 +25,15 @@ A minimalist, editorial academic website built with [Astro](https://astro.build/
 ```
 .
 ├── .github/workflows/deploy.yml # Automated GitHub Pages CI/CD workflow
-├── astro.config.mjs             # Astro configuration
+├── astro.config.mjs             # Astro configuration (base: '/cv')
+├── build_preview.py             # Script to regenerate preview.html
 ├── package.json                 # Node dependencies & build scripts
-├── preview.html                 # Standalone compiled version (instant preview)
+├── preview.html                 # Standalone compiled version (instant offline preview)
 ├── public/
 │   └── favicon.svg              # Custom "SL." SVG icon
 └── src/
     ├── data/
-    │   └── cv.json              # CV content
+    │   └── cv.json              # 👈 All CV content is configured here
     ├── layouts/
     │   └── BaseLayout.astro     # Core HTML shell & SEO tags
     ├── pages/
@@ -29,11 +46,11 @@ A minimalist, editorial academic website built with [Astro](https://astro.build/
 
 ## ✏️ How to Update Your Content
 
-You don't need to touch complex HTML or CSS to add publications or experience. Simply edit **[`src/data/cv.json`](src/data/cv.json)**:
+You don't need to touch complex HTML or CSS to update publications or experience. Simply edit **[`src/data/cv.json`](src/data/cv.json)**:
 - **`research`**: Research lede, supervisor, affiliations.
-- **`publications`**: Published papers, conference abstracts, and works in preparation.
-- **`experience`**: Research positions and assistantships.
-- **`education`**: Ph.D., M.Sc., B.Sc. degrees and thesis topics.
+- **`publications`**: Published papers, conference abstracts, and works in preparation. *(Authors matching "Lin" will be automatically highlighted, while others like "Linz" remain unhighlighted)*.
+- **`experience`**: Research positions and assistantships. Include `PI: <Name>` to automatically generate a highlighted PI badge box.
+- **`education`**: Ph.D., M.Sc., B.Sc. degrees and thesis topics. Include `Supervisor: <Name>` or `Supervisors: <Names>` to automatically generate a supervisor badge box.
 - **`projects`**: Technical and biomedical engineering projects with badges.
 - **`skills`**: Categorized technical stacks (PyTorch, MATLAB, COMSOL, etc.).
 - **`teaching` & `leadership`**: Courses taught and student lab leadership.
@@ -41,11 +58,29 @@ You don't need to touch complex HTML or CSS to add publications or experience. S
 
 ---
 
-## 💻 Running Locally with Node.js & Astro
+## 🌐 Deploying to GitHub Pages
 
-If you want to run Astro's live-reload development server locally:
+The repository is configured to deploy automatically via GitHub Actions:
 
-1. **Install Node.js** (if not installed already):
+1. Commit and push your changes:
+   ```bash
+   git add .
+   git commit -m "Update CV"
+   git push origin main
+   ```
+2. In your GitHub repository at **[github.com/SimpingOjou/cv](https://github.com/SimpingOjou/cv)**:
+   - Navigate to **Settings** ➔ **Pages**.
+   - Under **Build and deployment > Source**, ensure **GitHub Actions** is selected.
+3. Your live site will automatically update at:
+   👉 **[https://simpingojou.github.io/cv/](https://simpingojou.github.io/cv/)**
+
+---
+
+## 💻 Optional: Running Locally with Node.js & Astro
+
+If you install Node.js and prefer running Astro's live-reload development server locally:
+
+1. **Install Node.js** (via Homebrew on macOS):
    ```bash
    brew install node
    ```
@@ -57,25 +92,4 @@ If you want to run Astro's live-reload development server locally:
    ```bash
    npm run dev
    ```
-   Open `http://localhost:4321` in your browser.
-
----
-
-## 🌐 Deploying for Free to GitHub Pages
-
-This repository is already configured with an automated GitHub Action in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
-
-1. Create a repository on GitHub (e.g. `CV` or `<username>.github.io`).
-2. Push your code:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial academic CV site"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git push -u origin main
-   ```
-3. On GitHub, go to **Settings > Pages**:
-   - Under **Build and deployment > Source**, select **GitHub Actions**.
-4. The deployment workflow will automatically run, build the Astro site, and publish your website!
-
+   Open `http://localhost:4321/cv/` in your browser.
