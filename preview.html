@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <title>Simone (Chang Hui) Lin — Ph.D. Candidate — Theoretical & Applied Neuroscience</title>
+    <title>Simone (Chang Hui) Lin — Ph.D. Candidate — Computational Neuroscience</title>
     <meta name="description" content="I am a biomedical engineer and neuroscience researcher with a background in computational modeling, AI-driven data analysis, and physiological signal processing. My current doctoral research focuses on using contrastive learning and deep learning representations to analyze clinical neural and behavioral data, aiming to uncover the underlying mechanisms of human motor control and its disorders." />
     <meta name="theme-color" content="#0b0b0d" />
     <style>
@@ -137,17 +137,68 @@ ul, ol {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.6rem;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 .tag {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  color: var(--color-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-current-line) 85%, var(--dracula-purple) 15%);
+  border: 1px solid color-mix(in srgb, var(--color-current-line) 60%, var(--dracula-purple) 40%);
+  color: #f8f8f2 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+}
+.tag:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--color-current-line) 70%, var(--dracula-purple) 30%);
+  border-color: var(--dracula-purple);
+  color: #ffffff !important;
+}
+
+/* Brighten entry metadata and details for Dracula readability */
+.head .meta {
+  color: var(--color-fg) !important; /* #f8f8f2 */
+  font-size: var(--text-sm);
+  opacity: 0.95;
+}
+.head .meta .period {
+  color: var(--dracula-purple) !important; /* #bd93f9 */
+  font-weight: 600;
+}
+.detail {
+  color: var(--color-fg) !important; /* #f8f8f2 */
+  opacity: 0.95;
+  line-height: 1.6;
+}
+.venue {
+  color: var(--color-fg) !important;
+  opacity: 0.95;
+}
+.year {
+  color: var(--dracula-purple) !important;
+  font-weight: 600;
+}
+
+/* Authors list styling: bright #f8f8f2 with prominent #bd93f9 for your name */
+.authors {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: #f8f8f2 !important;
+  line-height: 1.5;
+}
+.authors span {
+  color: #f8f8f2;
+}
+.authors .me {
+  color: var(--dracula-purple) !important; /* #bd93f9 */
+  font-weight: 700 !important;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--dracula-purple) 60%, transparent);
+  text-underline-offset: 3px;
 }
 
 /* Supervisor / PI Badge Box */
@@ -373,7 +424,7 @@ ul, ol {
         <p class="eyebrow u-mono" data-anima="fade-in">COMPUTATIONAL NEUROSCIENCE · DEEP LEARNING · BIOMECHANICS</p>
         <h1 class="name" data-anima="split-lines">Simone (Chang Hui) Lin</h1>
         <div class="meta">
-          <p class="role u-mono" data-anima="fade-up">Ph.D. Candidate — Theoretical & Applied Neuroscience</p>
+          <p class="role u-mono" data-anima="fade-up">Ph.D. Candidate — Computational Neuroscience</p>
           <p class="tagline" data-anima="fade-up">Neuroscience, Time Series Analysis, and Motor Control.</p>
         </div>
 
@@ -486,7 +537,7 @@ ul, ol {
           <h2 id="publications-heading" class="section-title" data-anima="split-lines">Publications</h2>
         </div>
         <div class="section-body">
-          <h3 class="group u-mono" data-anima="fade-in">Peer-Reviewed & Conference Abstracts</h3>
+          <h3 class="group u-mono" data-anima="fade-in">Published</h3>
           
         <article class="pub" data-anima="fade-up">
           <p class="year u-mono">2024</p>
@@ -499,7 +550,7 @@ ul, ol {
         </article>
         
 
-          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Work in Progress</h3>
+          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Conference Abstracts</h3>
           
         <article class="pub" data-anima="fade-up">
           <p class="year u-mono">2026</p>
@@ -523,7 +574,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">PhD Researcher</h3>
-            <p class="meta u-mono">Center for Translational Neurophysiology of Speech and Communication, IIT@CTNSC · 2025 - Present</p>
+            <p class="meta u-mono">Center for Translational Neurophysiology of Speech and Communication, IIT@CTNSC · <span class="period">2025 - Present</span></p>
           </div>
           <p class="detail">Applying contrastive learning algorithms to clinical neural and behavioral data</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisor: Alessandro D'Ausilio</span></div>
@@ -532,7 +583,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Laboratory Assistant</h3>
-            <p class="meta u-mono">Neural Circuitries and Motor Repair Laboratory, University of Copenhagen · 2024 - 2025</p>
+            <p class="meta u-mono">Neural Circuitries and Motor Repair Laboratory, University of Copenhagen · <span class="period">2024 - 2025</span></p>
           </div>
           <p class="detail">Analyzed behavioral experimental pose data in MATLAB and Python. Engineered an automated pipeline for pose data analysis and feature extraction across healthy and pathological preclinical CNS models</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisor: Carmelo Bellardita</span></div>
@@ -541,7 +592,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Research Intern</h3>
-            <p class="meta u-mono">Danish Research Center for Magnetic Resonance (DRCMR) · 2024</p>
+            <p class="meta u-mono">Danish Research Center for Magnetic Resonance (DRCMR) · <span class="period">2024</span></p>
           </div>
           <p class="detail">Analyzed and extracted physiological features from clinical electromyographic (EMG) and accelerometer signals to assess reaction times during a psychological conflict task</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisor: Lasse Christiansen</span></div>
@@ -550,7 +601,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Research Intern</h3>
-            <p class="meta u-mono">Laboratory of Experimental Cardiology, University of Copenhagen · 2023</p>
+            <p class="meta u-mono">Laboratory of Experimental Cardiology, University of Copenhagen · <span class="period">2023</span></p>
           </div>
           <p class="detail">Extracted physiological features from electrocardiogram (ECG) signals using neural networks and evaluated model performance against ground truth with RMSE</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisor: Jørgen K</span></div>
@@ -559,7 +610,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Bachelor Research Intern</h3>
-            <p class="meta u-mono">Humanitas Research Hospital · 2022</p>
+            <p class="meta u-mono">Humanitas Research Hospital · <span class="period">2022</span></p>
           </div>
           <p class="detail">Analyzed experimental effects of chemotherapeutic drugs on OCI-LY19 cancer cells. Implemented a mathematical model to fit human lymphoma cell response</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisors: Giustina Casagrande & Maria Laura Costantino</span></div>
@@ -577,8 +628,8 @@ ul, ol {
           
         <article class="entry" data-anima="fade-up">
           <div class="head">
-            <h3 class="title">Ph.D. in Theoretical and Applied Neuroscience</h3>
-            <p class="meta u-mono">University of Camerino, University of Ferrara & IIT · 2025 - Present</p>
+            <h3 class="title">Ph.D. in Computational Neuroscience</h3>
+            <p class="meta u-mono">University of Camerino, University of Ferrara & IIT · <span class="period">2025 - Present</span></p>
           </div>
           
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisor: Alessandro D'Ausilio</span></div>
@@ -587,7 +638,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">M.Sc. in Biomedical Engineering</h3>
-            <p class="meta u-mono">Technical University of Denmark (DTU) & University of Copenhagen (KU) · 2023 - 2025</p>
+            <p class="meta u-mono">Technical University of Denmark (DTU) & University of Copenhagen (KU) · <span class="period">2023 - 2025</span></p>
           </div>
           <p class="detail">Thesis: Computational Tool for Quantifying Movement Patterns: Linking Neural Activity to Behavior · Grade: 12 (Maximum Danish mark)</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisors: Carmelo Bellardita, Silvia Tolu</span></div>
@@ -596,7 +647,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">B.Sc. in Biomedical Engineering</h3>
-            <p class="meta u-mono">Polytechnic University of Milan · 2019 - 2023</p>
+            <p class="meta u-mono">Polytechnic University of Milan · <span class="period">2019 - 2023</span></p>
           </div>
           <p class="detail">Thesis: Individuation of a Mathematical Model to Describe Tumor Cell Growth Alterations When Subjected to Chemotherapeutic Drugs</p>
           <div class="supervisor-badge u-mono"><span class="supervisor-icon">◈</span><span>Supervisors: Maria Laura Costantino, Giustina Casagrande</span></div>
@@ -615,7 +666,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Microstructure analysis with confocal laser scanning microscopy</h3>
-            <p class="meta u-mono">DTU · 2024</p>
+            <p class="meta u-mono">DTU · <span class="period">2024</span></p>
           </div>
           <div class="tags"><span class="tag">Microscopy</span><span class="tag">Image Analysis</span><span class="tag">FIJI</span></div>
         </article>
@@ -623,7 +674,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Biomechanical modeling of the human aorta, tendon, and femur</h3>
-            <p class="meta u-mono">DTU · 2024</p>
+            <p class="meta u-mono">DTU · <span class="period">2024</span></p>
           </div>
           <div class="tags"><span class="tag">COMSOL</span><span class="tag">Finite Element Analysis</span><span class="tag">Biomechanics</span></div>
         </article>
@@ -631,7 +682,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Robot sensor integration and decision making</h3>
-            <p class="meta u-mono">DTU · 2024</p>
+            <p class="meta u-mono">DTU · <span class="period">2024</span></p>
           </div>
           <div class="tags"><span class="tag">ROS2</span><span class="tag">RViz</span><span class="tag">Decision Algorithms</span></div>
         </article>
@@ -639,7 +690,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Bio-inspired cerebellar controller for robotic arm</h3>
-            <p class="meta u-mono">DTU · 2024</p>
+            <p class="meta u-mono">DTU · <span class="period">2024</span></p>
           </div>
           <div class="tags"><span class="tag">Bio-inspired AI</span><span class="tag">Cerebellum</span><span class="tag">Robotics</span><span class="tag">Control Theory</span></div>
         </article>
@@ -703,42 +754,42 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Physics for Medicine</h3>
-            <p class="meta u-mono">University of Ferrara, Italy · 2026 (30 hours)</p>
+            <p class="meta u-mono">University of Ferrara, Italy · <span class="period">2026</span> (30 hours)</p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Calculus I</h3>
-            <p class="meta u-mono">University of Ferrara, Italy · 2026 (30 hours)</p>
+            <p class="meta u-mono">University of Ferrara, Italy · <span class="period">2026</span> (30 hours)</p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Information Theory and Mathematics</h3>
-            <p class="meta u-mono">University of Ferrara, Italy · 2026 (30 hours)</p>
+            <p class="meta u-mono">University of Ferrara, Italy · <span class="period">2026</span> (30 hours)</p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Numerical Methods in Python</h3>
-            <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2023 (12 hours)</p>
+            <p class="meta u-mono">Politecnico Open unix Labs, Italy · <span class="period">2023</span> (12 hours)</p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Machine Learning with Keras</h3>
-            <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2022 (4 hours)</p>
+            <p class="meta u-mono">Politecnico Open unix Labs, Italy · <span class="period">2022</span> (4 hours)</p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Arduino and IoT</h3>
-            <p class="meta u-mono">Politecnico Open unix Labs, Italy · 2022 (4 hours)</p>
+            <p class="meta u-mono">Politecnico Open unix Labs, Italy · <span class="period">2022</span> (4 hours)</p>
           </div>
         </article>
         
@@ -748,7 +799,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Honorary Member</h3>
-            <p class="meta u-mono">Politecnico Open unix Labs · 2023 - Present</p>
+            <p class="meta u-mono">Politecnico Open unix Labs · <span class="period">2023 - Present</span></p>
           </div>
           
         </article>
@@ -756,7 +807,7 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">Secretary and Treasurer</h3>
-            <p class="meta u-mono">Politecnico Open unix Labs · 2022 - 2023</p>
+            <p class="meta u-mono">Politecnico Open unix Labs · <span class="period">2022 - 2023</span></p>
           </div>
           <p class="detail">10 hours/week managing operations, finance, and community workshops.</p>
         </article>
@@ -767,21 +818,21 @@ ul, ol {
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">European Congress of Physiology: FEPS-SIF 2026</h3>
-            <p class="meta u-mono">Brescia, Italy · 2026</p>
+            <p class="meta u-mono">Brescia, Italy · <span class="period">2026</span></p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">NAD Annual Meeting 2024</h3>
-            <p class="meta u-mono">Neuroscience Academy Denmark, Denmark · 2024</p>
+            <p class="meta u-mono">Neuroscience Academy Denmark, Denmark · <span class="period">2024</span></p>
           </div>
         </article>
         
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">IN-Retreat</h3>
-            <p class="meta u-mono">Copenhagen University, Denmark · 2024</p>
+            <p class="meta u-mono">Copenhagen University, Denmark · <span class="period">2024</span></p>
           </div>
         </article>
         

@@ -59,7 +59,7 @@ def build():
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">{e["role"]}</h3>
-            <p class="meta u-mono">{e.get('institution', '')} · {e.get('period', '')}</p>
+            <p class="meta u-mono">{e.get('institution', '')} · <span class="period">{e.get('period', '')}</span></p>
           </div>
           {body_p}
           {sup_div}
@@ -75,7 +75,7 @@ def build():
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">{ed["degree"]}</h3>
-            <p class="meta u-mono">{ed.get('institution', '')} · {ed.get('period', '')}</p>
+            <p class="meta u-mono">{ed.get('institution', '')} · <span class="period">{ed.get('period', '')}</span></p>
           </div>
           {body_p}
           {sup_div}
@@ -89,7 +89,7 @@ def build():
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">{pr["title"]}</h3>
-            <p class="meta u-mono">{pr.get('institution', '')} · {pr.get('year', '')}</p>
+            <p class="meta u-mono">{pr.get('institution', '')} · <span class="period">{pr.get('year', '')}</span></p>
           </div>
           <div class="tags">{tags}</div>
         </article>
@@ -113,7 +113,7 @@ def build():
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">{t["title"]}</h3>
-            <p class="meta u-mono">{t.get('venue', '')} · {t.get('year', '')} ({t.get('duration', '')})</p>
+            <p class="meta u-mono">{t.get('venue', '')} · <span class="period">{t.get('year', '')}</span> ({t.get('duration', '')})</p>
           </div>
         </article>
         '''
@@ -125,7 +125,7 @@ def build():
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">{l["role"]}</h3>
-            <p class="meta u-mono">{l.get('organization', '')} · {l.get('period', '')}</p>
+            <p class="meta u-mono">{l.get('organization', '')} · <span class="period">{l.get('period', '')}</span></p>
           </div>
           {det}
         </article>
@@ -137,7 +137,7 @@ def build():
         <article class="entry" data-anima="fade-up">
           <div class="head">
             <h3 class="title">{m["title"]}</h3>
-            <p class="meta u-mono">{m.get('organizer', '')} · {m.get('year', '')}</p>
+            <p class="meta u-mono">{m.get('organizer', '')} · <span class="period">{m.get('year', '')}</span></p>
           </div>
         </article>
         '''
@@ -313,10 +313,10 @@ def build():
           <h2 id="publications-heading" class="section-title" data-anima="split-lines">Publications</h2>
         </div>
         <div class="section-body">
-          <h3 class="group u-mono" data-anima="fade-in">Peer-Reviewed & Conference Abstracts</h3>
+          <h3 class="group u-mono" data-anima="fade-in">{cv.get('publications_labels', {}).get('published', 'Published')}</h3>
           {pubs_published}
 
-          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Work in Progress</h3>
+          <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">{cv.get('publications_labels', {}).get('in_progress', 'Conference Abstracts')}</h3>
           {pubs_wip}
         </div>
       </section>

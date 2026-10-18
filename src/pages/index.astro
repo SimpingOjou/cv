@@ -150,7 +150,7 @@ const formatDetails = (text: string) => {
         <h2 id="publications-heading" class="section-title" data-anima="split-lines">Publications</h2>
       </div>
       <div class="section-body">
-        <h3 class="group u-mono" data-anima="fade-in">Peer-Reviewed & Conference Abstracts</h3>
+        <h3 class="group u-mono" data-anima="fade-in">Published</h3>
         {cv.publications.published.map((pub) => (
           <article class="pub" data-anima="fade-up">
             <p class="year u-mono">{pub.year}</p>
@@ -175,7 +175,7 @@ const formatDetails = (text: string) => {
           </article>
         ))}
 
-        <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Work in Progress</h3>
+        <h3 class="group u-mono" data-anima="fade-in" style="margin-top: var(--space-6);">Conference Abstracts</h3>
         {cv.publications.in_progress.map((pub) => (
           <article class="pub" data-anima="fade-up">
             <p class="year u-mono">{pub.year}</p>
@@ -208,7 +208,7 @@ const formatDetails = (text: string) => {
             <article class="entry" data-anima="fade-up">
               <div class="head">
                 <h3 class="title">{exp.role}</h3>
-                <p class="meta u-mono">{exp.institution} · {exp.period}</p>
+                <p class="meta u-mono">{exp.institution} · <span class="period">{exp.period}</span></p>
               </div>
               {body && <p class="detail">{body}</p>}
               {supervisor && (
@@ -236,7 +236,7 @@ const formatDetails = (text: string) => {
             <article class="entry" data-anima="fade-up">
               <div class="head">
                 <h3 class="title">{edu.degree}</h3>
-                <p class="meta u-mono">{edu.institution} · {edu.period}</p>
+                <p class="meta u-mono">{edu.institution} · <span class="period">{edu.period}</span></p>
               </div>
               {body && <p class="detail">{body}</p>}
               {supervisor && (
@@ -262,7 +262,7 @@ const formatDetails = (text: string) => {
           <article class="entry" data-anima="fade-up">
             <div class="head">
               <h3 class="title">{proj.title}</h3>
-              <p class="meta u-mono">{proj.institution} · {proj.year}</p>
+              <p class="meta u-mono">{proj.institution} · <span class="period">{proj.year}</span></p>
             </div>
             <div class="tags">
               {proj.tags.map((tag) => (
@@ -308,7 +308,7 @@ const formatDetails = (text: string) => {
           <article class="entry" data-anima="fade-up">
             <div class="head">
               <h3 class="title">{t.title}</h3>
-              <p class="meta u-mono">{t.venue} · {t.year} ({t.duration})</p>
+              <p class="meta u-mono">{t.venue} · <span class="period">{t.year}</span> ({t.duration})</p>
             </div>
           </article>
         ))}
@@ -318,7 +318,7 @@ const formatDetails = (text: string) => {
           <article class="entry" data-anima="fade-up">
             <div class="head">
               <h3 class="title">{l.role}</h3>
-              <p class="meta u-mono">{l.organization} · {l.period}</p>
+              <p class="meta u-mono">{l.organization} · <span class="period">{l.period}</span></p>
             </div>
             {l.details && <p class="detail">{l.details}</p>}
           </article>
@@ -329,7 +329,7 @@ const formatDetails = (text: string) => {
           <article class="entry" data-anima="fade-up">
             <div class="head">
               <h3 class="title">{m.title}</h3>
-              <p class="meta u-mono">{m.organizer} · {m.year}</p>
+              <p class="meta u-mono">{m.organizer} · <span class="period">{m.year}</span></p>
             </div>
           </article>
         ))}
